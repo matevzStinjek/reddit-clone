@@ -21,6 +21,7 @@ module.exports = {
         'no-var': 'error',
         'prefer-const': 'error',
         'semi': ['error', 'never'],
+        'vue/html-indent': ['error', 4],
     },
     overrides: [
         {
