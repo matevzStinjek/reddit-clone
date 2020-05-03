@@ -3,7 +3,7 @@ module.exports = {
     env: {
         node: true,
     },
-    'extends': [
+    extends: [
         'plugin:vue/vue3-essential',
         'eslint:recommended',
     ],
@@ -11,17 +11,16 @@ module.exports = {
         parser: 'babel-eslint',
     },
     rules: {
+        'comma-dangle': ['error', 'always-multiline'],
+        'indent': ['error', 4],
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-        'no-unreachable': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
-        'indent': ['error', 4],
-        'comma-dangle': ['error', 'always-multiline'],
-        'semi': ['error', 'never'],
         'no-else-return': 'error',
         'no-trailing-spaces': 'error',
+        'no-unreachable': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-var': 'error',
         'prefer-const': 'error',
-        'sort-imports': 'error',
+        'semi': ['error', 'never'],
     },
     overrides: [
         {
