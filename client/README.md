@@ -15,14 +15,13 @@ npm run serve
 npm run build
 ```
 
-### Run your tests
+### Lints files
 ```
-npm run test
-```
+npm run lint
 
 ### Lints and fixes files
 ```
-npm run lint
+npm run lint:fix
 ```
 
 ### Customize configuration
