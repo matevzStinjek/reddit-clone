@@ -1,4 +1,4 @@
-# vue-next
+# client
 
 ## Project setup
 ```
@@ -15,14 +15,13 @@ npm run serve
 npm run build
 ```
 
-### Run your unit tests
+### Lints files
 ```
-npm run test:unit
-```
+npm run lint
 
 ### Lints and fixes files
 ```
-npm run lint
+npm run lint:fix
 ```
 
 ### Customize configuration
