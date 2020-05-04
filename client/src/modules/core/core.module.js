@@ -20,5 +20,6 @@ export class CoreModule {
 
     mount () {
         this.vm.mount('#app')
+        this.router.push('/') // hm, this should not be necesarry
     }
 }
