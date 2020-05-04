@@ -11,9 +11,6 @@ src
     |       └—— SideMenu.vue
     |   └—— connector
     |       └—— apolloClient.js
-    |   └—— routes
-    |       └—— index.js
-    |       └—— core.routes.js
     |   └—— store
     |       └—— index.js
     |       └—— core.store.js
