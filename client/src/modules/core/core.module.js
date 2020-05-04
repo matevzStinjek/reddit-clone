@@ -14,8 +14,8 @@ export class CoreModule {
 
     install () {
         this.vm = createApp(App)
-            .use(this.router)
             .use(this.store)
+            .use(this.router)
     }
 
     mount () {
