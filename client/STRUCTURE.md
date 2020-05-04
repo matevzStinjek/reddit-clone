@@ -11,19 +11,19 @@ src
     |       └—— SideMenu.vue
     |   └—— connector
     |       └—— apolloClient.js
-    |   └—— router
+    |   └—— routes
     |       └—— index.js
-    |       └—— router.js
+    |       └—— core.routes.js
     |   └—— store
     |       └—— index.js
-    |       └—— store.js
+    |       └—— core.store.js
     |   └—— core.module.js
     |   └—— index.js
     └—— create
     |   └—— assets
     |   └—— routes
     |       └—— index.js
-    |       └—— routes.js
+    |       └—— create.routes.js
     |   └—— services
     |       └—— create.service.js
     |   └—— views
@@ -40,7 +40,7 @@ src
     |       └—— comments.model.js
     |   └—— routes
     |       └—— index.js
-    |       └—— routes.js
+    |       └—— post.routes.js
     |   └—— services
     |       └—— post.service.js
     |   └—— views
@@ -48,8 +48,8 @@ src
     |   └—— post.module.js
     |   └—— index.js
     └—— router
-    |   └—— router.module.js
     |   └—— index.js
+    |   └—— router.module.js
     └—— subreddit
     |   └—— assets
     |   └—— components
@@ -58,12 +58,12 @@ src
     |       └—— subreddit.model.js
     |   └—— routes
     |       └—— index.js
-    |       └—— routes.js
+    |       └—— subreddit.routes.js
     |   └—— services
     |       └—— subreddit.service.js
     |   └—— store
     |       └—— index.js
-    |       └—— store.js
+    |       └—— subreddit.store.js
     |   └—— views
     |       └—— SubredditView.vue
     |   └—— subreddit.module.js
@@ -86,12 +86,13 @@ src
     |       └—— propValidators.js
     |   └—— store
     |       └—— index.js
-    |       └—— store.js
+    |       └—— shared.store.js
     |   └—— styles
     |       └—— colors.less
-    |       └—— variables.less
-    |       └—— typography.less
     |       └—— common.less
+    |       └—— mixins.less
+    |       └—— typography.less
+    |       └—— variables.less
     |   └—— util
     |       └—— fileUtils.js
     |   └—— shared.module.js
