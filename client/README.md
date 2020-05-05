@@ -1,4 +1,8 @@
-# client
+# Single Page web application
+
+## Structure
+
+For the proposed structure refer to STRUCTURE.md
 
 ## Project setup
 ```
@@ -18,11 +22,9 @@ npm run build
 ### Lints files
 ```
 npm run lint
+```
 
 ### Lints and fixes files
 ```
 npm run lint:fix
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).

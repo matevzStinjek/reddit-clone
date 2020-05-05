@@ -28,6 +28,7 @@
     "eslint-plugin-vue": "^7.0.0-alpha.0",
     "less": "^3.0.4",
     "less-loader": "^5.0.0",
+    "path": "0.12.7",
     "vue-cli-plugin-vue-next": "0.1.2"
   }
 }
