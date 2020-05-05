@@ -10,8 +10,6 @@
     "lint:fix": "vue-cli-service lint --fix"
   },
   "dependencies": {
-    "bootstrap": "^4.4.1",
-    "bootstrap-vue": "^2.12.0",
     "core-js": "^3.6.4",
     "vue": "^3.0.0-beta.1",
     "vue-router": "^4.0.0-alpha.5",
