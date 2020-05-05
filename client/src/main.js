@@ -1,20 +1,30 @@
-import Vue from 'vue'
-import App from './App.vue'
-import router from './router'
-import store from './store'
+import { RouterModule } from '@/modules/router'
+import { StoreModule } from '@/modules/store'
+import { CoreModule } from '@/modules/core'
+import { SharedModule } from './modules/shared'
+import { HomeModule } from './modules/home'
+import { AboutModule } from './modules/about'
 
-import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
+function bootstrap () {
+    const routerModule = new RouterModule()
+    routerModule.install()
 
-// Install BootstrapVue
-Vue.use(BootstrapVue)
-Vue.use(BootstrapVueIcons)
-Vue.config.productionTip = false
+    const storeModule = new StoreModule()
+    storeModule.install()
 
-new Vue({
-  router,
-  store,
-  render: h => h(App)
-}).$mount('#app')
+    const coreModule = new CoreModule(storeModule, routerModule)
+    coreModule.install()
+
+    const sharedModule = new SharedModule(storeModule)
+    sharedModule.install()
+
+    const homeModule = new HomeModule(storeModule, routerModule)
+    homeModule.install()
+
+    const aboutModule = new AboutModule(storeModule, routerModule)
+    aboutModule.install()
+
+    coreModule.mount()
+}
+
+bootstrap()
