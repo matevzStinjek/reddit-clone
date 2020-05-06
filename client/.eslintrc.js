@@ -4,7 +4,7 @@ module.exports = {
         node: true,
     },
     extends: [
-        'plugin:vue/vue3-essential',
+        'plugin:vue/essential',
         'eslint:recommended',
     ],
     parserOptions: {
@@ -29,7 +29,6 @@ module.exports = {
         'vue/html-quotes': 'error',
         'vue/html-self-closing': 'error',
         'vue/mustache-interpolation-spacing': 'error',
-        'vue/no-deprecated-events-api': 'error',
         'vue/no-dupe-keys': 'error',
         'vue/no-use-v-if-with-v-for': 'error',
         'vue/order-in-components': 'error',
