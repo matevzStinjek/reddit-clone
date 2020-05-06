@@ -1,0 +1,12 @@
+@import './colors';
+@import './typography';
+
+/* --- Z-INDICES --- */
+$z-default: 1;
+$z-low: 100;
+$z-mid: 200;
+$z-high: 300;
+
+/* --- ANIMATION TIMES --- */
+$default-animation-time: 0.15s;
+$default-animation-delay: 0.10s;
