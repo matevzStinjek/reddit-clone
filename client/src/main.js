@@ -1,23 +1,16 @@
 import Vue from 'vue'
 import VueCompositionApi from '@vue/composition-api'
-import { BootstrapVue } from 'bootstrap-vue'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { RouterModule } from '@/modules/router'
 import { StoreModule } from '@/modules/store'
 import { CoreModule } from '@/modules/core'
 import { HomeModule } from '@/modules/home'
 import { AboutModule } from '@/modules/about'
 
-import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
-import 'bootstrap/dist/css/bootstrap.css'
-import 'bootstrap-vue/dist/bootstrap-vue.css'
-import 'bootstrap-vue/dist/bootstrap-vue-icons.min.css'
-
-// Install BootstrapVue
-Vue.use(BootstrapVue)
-Vue.use(BootstrapVueIcons)
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
 Vue.use(VueCompositionApi)
 
 function bootstrap() {

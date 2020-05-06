@@ -1,5 +1,5 @@
 @mixin font-stack() {
-    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI map-weights", "Segoe UI", "Roboto map-weights", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;   // lesshint spaceAroundOperator: false
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI map-weights", "Segoe UI", "Roboto map-weights", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 @mixin light-font() {
