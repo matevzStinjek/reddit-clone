@@ -1,0 +1,23 @@
+@mixin font-stack() {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI map-weights", "Segoe UI", "Roboto map-weights", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;   // lesshint spaceAroundOperator: false
+}
+
+@mixin light-font() {
+    @include font-stack();
+    font-weight: 300;
+}
+
+@mixin regular-font() {
+    @include font-stack();
+    font-weight: 400;
+}
+
+@mixin medium-font() {
+    @include font-stack();
+    font-weight: 500;
+}
+
+@mixin bold-font() {
+    @include font-stack();
+    font-weight: 700;
+}

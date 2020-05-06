@@ -1,21 +1,22 @@
 {
-  "name": "10gag",
+  "name": "reddit-clone",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "app.js",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/matevzStinjek/10Gag.git"
+    "url": "git+https://github.com/matevzStinjek/reddit-clone.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/matevzStinjek/10Gag/issues"
+    "url": "https://github.com/matevzStinjek/reddit-clone/issues"
   },
-  "homepage": "https://github.com/matevzStinjek/10Gag#readme",
+  "homepage": "https://github.com/matevzStinjek/reddit-clone#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "express": "^4.17.1",
