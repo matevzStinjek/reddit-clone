@@ -44,7 +44,7 @@ export default {
     }
 
     &__input {
-        width: 350px;
+        width: 320px;
         padding: 8px 20px;
         margin: 8px 0;
         border: 1px solid $white;
@@ -52,7 +52,7 @@ export default {
     }
 
     &__select {
-        width: 150px;
+        width: 160px;
         background: $charcoal;
         color: $white;
         padding: 8px 20px;
