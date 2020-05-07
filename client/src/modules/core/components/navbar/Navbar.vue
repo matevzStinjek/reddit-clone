@@ -1,6 +1,22 @@
 <template>
     <div>
-        <h1>Navbar</h1>
+        <div class="navbar">
+            <ul class="navbar__list">
+                <li class="navbar__item">Reddit.com</li>
+                <li class="navbar__item">
+                    <select class="navbar__select">
+                        <option value="home">Home</option>
+                        <option value="popular">Popular</option>
+                        <option value="all">All</option>
+                    </select>
+                </li>
+                <li class="navbar__item">
+                    <form class="navbar__form">
+                        <input class="navbar__input" type="text" placeholder="Search">
+                    </form>
+                </li>
+            </ul>
+        </div>
     </div>
 </template>
 
@@ -11,14 +27,37 @@ export default {
 </script>
 
 <style scoped lang="scss">
- @import "shared/styles/colors.scss";
+@import "shared/styles/colors.scss";
 
-.home-dropdown {
-    width: 160px;
-}
-
-.search, .search:focus {
-    background-color: $gray;
+.navbar {
+    background: $gray;
     color: $white;
+    padding: 10px;
+
+    &__item {
+        display: inline;
+        margin: 20px;
+    }
+
+    &__form {
+        display: inline;
+    }
+
+    &__input {
+        width: 350px;
+        padding: 8px 20px;
+        margin: 8px 0;
+        border: 1px solid $white;
+        border-radius: 4px;
+    }
+
+    &__select {
+        width: 150px;
+        background: $charcoal;
+        color: $white;
+        padding: 8px 20px;
+        margin: 8px 0;
+        border-radius: 4px;
+    }
 }
 </style>
