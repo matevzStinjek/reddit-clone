@@ -1,4 +1,4 @@
-import { createRouter, createWebHistory } from 'vue-router'
+import Router from 'vue-router'
 
 export class RouterModule {
 
@@ -6,16 +6,12 @@ export class RouterModule {
         return 'router'
     }
 
-    install () {
-        this.router = createRouter({
-            history: createWebHistory(process.env.BASE_URL),
-            routes: [],
-        })
-    }
+    install (Vue) {
+        Vue.use(Router)
 
-    addRoutes (routes) {
-        routes.forEach(route => {
-            this.router.addRoute(route)
+        this.router = new Router({
+            mode: 'history',
+            base: process.env.BASE_URL,
         })
     }
 }

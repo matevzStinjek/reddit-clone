@@ -7,13 +7,13 @@ export class HomeModule {
         return 'home'
     }
 
-    constructor (storeModule, routerModule) {
-        this.storeModule = storeModule
-        this.routerModule = routerModule
+    constructor (router, store) {
+        this.router = router
+        this.store = store
     }
 
     install () {
-        this.routerModule.addRoutes(homeRoutes)
-        this.storeModule.registerModule(homeStore, this.name)
+        this.router.addRoutes(homeRoutes)
+        this.store.registerModule(this.name, homeStore)
     }
 }

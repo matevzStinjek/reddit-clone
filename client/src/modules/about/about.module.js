@@ -7,13 +7,13 @@ export class AboutModule {
         return 'about'
     }
 
-    constructor (storeModule, routerModule) {
-        this.storeModule = storeModule
-        this.routerModule = routerModule
+    constructor (router, store) {
+        this.router = router
+        this.store = store
     }
 
     install () {
-        this.routerModule.addRoutes(aboutRoutes)
-        this.storeModule.registerModule(aboutStore, this.name)
+        this.router.addRoutes(aboutRoutes)
+        this.store.registerModule(this.name, aboutStore)
     }
 }

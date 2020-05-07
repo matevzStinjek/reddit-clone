@@ -1,28 +1,33 @@
+import Vue from 'vue'
+import VueCompositionApi from '@vue/composition-api'
+import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { RouterModule } from '@/modules/router'
 import { StoreModule } from '@/modules/store'
 import { CoreModule } from '@/modules/core'
-import { SharedModule } from './modules/shared'
-import { HomeModule } from './modules/home'
-import { AboutModule } from './modules/about'
+import { HomeModule } from '@/modules/home'
+import { AboutModule } from '@/modules/about'
 
-function bootstrap () {
+Vue.config.productionTip = false
+
+Vue.use(BootstrapVue)
+Vue.use(IconsPlugin)
+Vue.use(VueCompositionApi)
+
+function bootstrap() {
     const routerModule = new RouterModule()
-    routerModule.install()
+    routerModule.install(Vue)
 
     const storeModule = new StoreModule()
-    storeModule.install()
+    storeModule.install(Vue)
 
-    const coreModule = new CoreModule(storeModule, routerModule)
-    coreModule.install()
+    const coreModule = new CoreModule(routerModule.router, storeModule.store)
+    coreModule.install(Vue)
 
-    const sharedModule = new SharedModule(storeModule)
-    sharedModule.install()
+    const homeModule = new HomeModule(routerModule.router, storeModule.store)
+    homeModule.install(Vue)
 
-    const homeModule = new HomeModule(storeModule, routerModule)
-    homeModule.install()
-
-    const aboutModule = new AboutModule(storeModule, routerModule)
-    aboutModule.install()
+    const aboutModule = new AboutModule(routerModule.router, storeModule.store)
+    aboutModule.install(Vue)
 
     coreModule.mount()
 }

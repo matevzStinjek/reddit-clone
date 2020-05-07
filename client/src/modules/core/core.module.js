@@ -1,5 +1,4 @@
-import { createApp } from 'vue'
-import App from './components/App.vue'
+import App from 'core/components/App.vue'
 
 export class CoreModule {
 
@@ -7,19 +6,20 @@ export class CoreModule {
         return 'core'
     }
 
-    constructor (storeModule, routerModule) {
-        this.store = storeModule.store
-        this.router = routerModule.router
+    constructor(router, store) {
+        this.router = router
+        this.store = store
     }
 
-    install () {
-        this.vm = createApp(App)
-            .use(this.store)
-            .use(this.router)
+    install(Vue) {
+        this.vm = new Vue({
+            router: this.router,
+            store: this.store,
+            render: h => h(App),
+        })
     }
 
     mount () {
-        this.vm.mount('#app')
-        this.router.push('/') // hm, this should not be necesarry
+        this.vm.$mount('#app')
     }
 }

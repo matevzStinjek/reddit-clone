@@ -1,16 +1,16 @@
 import Vuex from 'vuex'
 
+import coreStore from 'core/store'
+
 export class StoreModule {
 
     get name () {
         return 'store'
     }
 
-    install () {
-        this.store = Vuex.createStore()
-    }
+    install (Vue) {
+        Vue.use(Vuex)
 
-    registerModule (module, name = '') {
-        this.store.registerModule([name], module)
+        this.store = new Vuex.Store(coreStore)
     }
 }

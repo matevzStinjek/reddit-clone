@@ -70,27 +70,16 @@ src
     |       └—— furniture
     |       └—— logicless
     |       └—— stateless
-    |           └—— buttons
-    |               └—— Button.vue 
-    |           └—— lists
-    |               └—— List.vue
-    |               └—— ListItem.vue
-    |           └—— forms
-    |               └—— Dropdown.vue
-    |               └—— input
-    |                   └—— Input.vue
     |   └—— helpers
     |       └—— propValidators.js
-    |   └—— store
-    |       └—— index.js
-    |       └—— shared.store.js
     |   └—— styles
-    |       └—— colors.less
-    |       └—— common.less
-    |       └—— mixins.less
-    |       └—— typography.less
-    |       └—— variables.less
+    |       └—— colors.scss
+    |       └—— common.scss
+    |       └—— mixins.scss
+    |       └—— typography.scss
+    |       └—— variables.scss
     |   └—— util
+    |       └—— utils.js
     |       └—— fileUtils.js
     |   └—— shared.module.js
     |   └—— index.js
