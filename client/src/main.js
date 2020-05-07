@@ -1,6 +1,5 @@
 import Vue from 'vue'
 import VueCompositionApi from '@vue/composition-api'
-import { BootstrapVue, IconsPlugin } from 'bootstrap-vue'
 import { RouterModule } from '@/modules/router'
 import { StoreModule } from '@/modules/store'
 import { CoreModule } from '@/modules/core'
@@ -9,8 +8,6 @@ import { AboutModule } from '@/modules/about'
 
 Vue.config.productionTip = false
 
-Vue.use(BootstrapVue)
-Vue.use(IconsPlugin)
 Vue.use(VueCompositionApi)
 
 function bootstrap() {
