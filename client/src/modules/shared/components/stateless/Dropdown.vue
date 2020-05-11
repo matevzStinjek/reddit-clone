@@ -1,6 +1,12 @@
 <template>
     <b-dropdown :text="selectedOptionLabel">
-        <b-dropdown-item v-for="option in options" :key="option.id" :disabled="option.isDisabled" :active="option.isSelected" @click="onClick(option.id)">{{ option.label }}</b-dropdown-item>
+        <b-dropdown-item
+            v-for="option in options"
+            :key="option.id"
+            :disabled="option.isDisabled"
+            :active="option.isSelected"
+            @click="onClick(option.id)"
+        >{{ option.label }}</b-dropdown-item>
     </b-dropdown>
 </template>
 
