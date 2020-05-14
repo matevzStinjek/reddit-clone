@@ -4,10 +4,7 @@ src
     └—— core
     |   └—— components
     |       └—— App.vue
-    |       └—— navbar
-    |           └—— Navbar.vue
-    |           └—— components
-    |               └—— Search.vue
+    |       └—— Navbar.vue        
     |       └—— SideMenu.vue
     |   └—— connector
     |       └—— apolloClient.js
@@ -70,6 +67,8 @@ src
     |       └—— furniture
     |       └—— logicless
     |       └—— stateless
+    |           └—— Dropdown.vue
+    |           └—— Search.vue
     |   └—— helpers
     |       └—— propValidators.js
     |   └—— styles
