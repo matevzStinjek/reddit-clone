@@ -1,5 +1,6 @@
 <template>
     <div id="app">
+        <navbar />
         <div id="nav">
             <router-link to="/">Home</router-link> |
             <router-link to="/about">About</router-link>
@@ -10,8 +11,24 @@
     </div>
 </template>
 
+<script>
+import Navbar from 'core/components/Navbar.vue'
+
+export default {
+    components: {
+        Navbar,
+    },
+}
+</script>
+
 <style lang="scss">
 @import 'core/styles/bootstrap';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;

@@ -17,8 +17,7 @@ export default {
 @import 'shared/styles/colors';
 
 .main {
-    width: 50%;
-    margin: 15px auto;
+    width: 40%;
 }
 
 .search .form-control {

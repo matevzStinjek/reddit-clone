@@ -4,6 +4,7 @@
         <dropdown
             v-model="selectedOption"
             :options="options"
+            :label="label"
         />
     </div>
 </template>
@@ -24,6 +25,7 @@ export default {
                 { id: 1, label: 'Test' },
                 { id: 2, label: 'Test 2', disabled: true },
             ],
+            label: 'About',
         }
     },
 }

@@ -1,5 +1,5 @@
 <template>
-    <b-dropdown :text="selectedOptionLabel">
+    <b-dropdown class="dropdown" :text="selectedOptionLabel">
         <b-dropdown-item
             v-for="option in options"
             :key="option.id"
@@ -19,6 +19,7 @@ export default {
     props: {
         value: { type: [Number, String], default: null }, // id
         options: { type: Array, required: true },
+        label: { type: String, default: null },
     },
     computed: {
         mappedOptions () {
@@ -28,11 +29,11 @@ export default {
             return this.mappedOptions.find(option => option.isSelected)
         },
         selectedOptionLabel () {
-            return this.selectedOption && this.selectedOption.label || this.defaultLabel
+            return this.selectedOption && this.selectedOption.label || this.label || this.defaultLabel
         },
     },
     beforeCreate () {
-        this.defaultLabel = 'Select option'
+        this.defaultLabel = 'Home'
     },
     methods: {
         onClick (id) {
@@ -41,3 +42,15 @@ export default {
     },
 }
 </script>
+
+<style lang="scss">
+@import 'shared/styles/colors';
+
+.dropdown > button {
+    background: $redditBackground;
+    width: 130px;
+    &:hover {
+        background: $redditBackgroundHover;
+    }
+}
+</style>
