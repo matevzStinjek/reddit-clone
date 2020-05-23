@@ -6,6 +6,7 @@ import { StoreModule } from '@/modules/store'
 import { CoreModule } from '@/modules/core'
 import { HomeModule } from '@/modules/home'
 import { AboutModule } from '@/modules/about'
+import { SubredditModule } from '@/modules/subreddit'
 
 Vue.config.productionTip = false
 
@@ -27,6 +28,8 @@ function bootstrap() {
 
     const aboutModule = new AboutModule(routerModule.router, storeModule.store)
     aboutModule.install(Vue)
+    const subredditModule = new SubredditModule(routerModule.router, storeModule.store)
+    subredditModule.install(Vue)
 
     coreModule.mount()
 }
