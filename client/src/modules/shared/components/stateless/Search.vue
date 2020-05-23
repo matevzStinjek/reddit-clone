@@ -1,9 +1,7 @@
 <template>
-    <div class="main">
-        <div class="search">
-            <span class="form-control-feedback"><b-icon-search /></span>
-            <input type="text" class="form-control" placeholder="Search">
-        </div>
+    <div class="search">
+        <span class="form-control-feedback"><b-icon-search /></span>
+        <input type="text" class="form-control" placeholder="Search">
     </div>
 </template>
 
@@ -16,8 +14,9 @@ export default {
 <style scoped lang="scss">
 @import 'shared/styles/colors';
 
-.main {
+.search {
     width: 40%;
+    min-width: 150px;
 }
 
 .search .form-control {
