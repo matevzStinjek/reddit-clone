@@ -28,6 +28,7 @@ function bootstrap() {
 
     const aboutModule = new AboutModule(routerModule.router, storeModule.store)
     aboutModule.install(Vue)
+
     const subredditModule = new SubredditModule(routerModule.router, storeModule.store)
     subredditModule.install(Vue)
 
