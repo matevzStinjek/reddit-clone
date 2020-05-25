@@ -3,7 +3,7 @@
         <div id="nav">
             <router-link to="/">Home</router-link> |
             <router-link to="/about">About</router-link> |
-            <router-link to="/r/subreddit">r/Barca</router-link>
+            <router-link to="/r/subreddit">r/Android</router-link>
         </div>
         <div />
         <img>
