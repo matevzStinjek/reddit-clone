@@ -1,39 +1,29 @@
 <template>
     <div class="search">
-        <span class="form-control-feedback"><b-icon-search /></span>
+        <span class="search__icon"><b-icon-search /></span>
         <input type="text" class="form-control" placeholder="Search">
     </div>
 </template>
 
-<script>
-export default {
-    name: 'search',
-}
-</script>
-
 <style scoped lang="scss">
 @import 'shared/styles/colors';
 
-.search {
-    width: 40%;
-    min-width: 150px;
-}
-
 .search .form-control {
-    padding-left: 2.5rem;
-    background: $redditBackground;
-    color: $lightGray;
+    padding-left: 40px;
+    background: $void;
+    color: $smog;
 }
 
 .form-control:hover {
-      border: 1.5px solid $white;
+      border: 2px solid $white;
 }
 
-.search .form-control-feedback {
+.search__icon {
     position: absolute;
     display: block;
-    width: 2.5rem;
-    line-height: 2.5rem;
-    color: $lightGray;
+    width: 40px;
+    line-height: 40px;
+    color: $smog;
 }
+
 </style>

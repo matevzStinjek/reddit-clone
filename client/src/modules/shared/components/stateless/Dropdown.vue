@@ -19,7 +19,7 @@ export default {
     props: {
         value: { type: [Number, String], default: null }, // id
         options: { type: Array, required: true },
-        label: { type: String, default: null },
+        label: { type: String, default: 'Select' },
     },
     computed: {
         mappedOptions () {
@@ -29,11 +29,8 @@ export default {
             return this.mappedOptions.find(option => option.isSelected)
         },
         selectedOptionLabel () {
-            return this.selectedOption && this.selectedOption.label || this.label || this.defaultLabel
+            return this.selectedOption && this.selectedOption.label || this.label
         },
-    },
-    beforeCreate () {
-        this.defaultLabel = 'Home'
     },
     methods: {
         onClick (id) {
@@ -46,11 +43,9 @@ export default {
 <style lang="scss">
 @import 'shared/styles/colors';
 
-.dropdown > button {
-    background: $redditBackground;
-    width: 130px;
-    &:hover {
-        background: $redditBackgroundHover;
-    }
+.dropdown > .dropdown-toggle {
+    background: $void;
+    width: 128px;
 }
+
 </style>

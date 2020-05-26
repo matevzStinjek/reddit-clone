@@ -8,6 +8,8 @@ src
     |       └—— SideMenu.vue
     |   └—— connector
     |       └—— apolloClient.js
+    |   └—— services
+    |       └—— core.service.js
     |   └—— store
     |       └—— index.js
     |       └—— core.store.js

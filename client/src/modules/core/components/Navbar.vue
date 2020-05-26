@@ -1,18 +1,18 @@
 <template>
-    <div class="flex-container">
-        <h4 class="flex-item">Reddit.com</h4>
+    <div class="navbar">
+        <div class="navbar__item">Reddit.com</div>
         <dropdown
-            class="flex-item"
-            v-model="selectedOption"
-            :options="options"
-            :label="homeLabel"
+            class="navbar__item"
+            v-model="selectedSubreddit"
+            :options="allSubreddits"
+            label="Home"
         />
-        <search class="flex-item" />
+        <search class="navbar__item" />
         <dropdown
-            class="flex-item"
-            v-model="selectedOption"
-            :options="options"
-            :label="profileLabel"
+            class="navbar__item"
+            v-model="selectedProfileSetting"
+            :options="allProfileOptions"
+            label="Username"
         />
     </div>
 </template>
@@ -20,6 +20,7 @@
 <script>
 import Search from 'shared/components/stateless/Search.vue'
 import Dropdown from 'shared/components/stateless/Dropdown.vue'
+import { mapGetters } from 'vuex'
 
 export default {
     components: {
@@ -28,31 +29,27 @@ export default {
     },
     data () {
         return {
-            selectedOption: null,
-            options: [
-                { id: 1, label: 'Test' },
-                { id: 2, label: 'Test 2', disabled: true },
-            ],
-            homeLabel: 'Home',
-            profileLabel: 'Username',
+            selectedSubreddit: null,
+            selectedProfileSetting: null,
         }
     },
+    computed: mapGetters(['allSubreddits', 'allProfileOptions']),
 }
 </script>
 
 <style scoped lang="scss">
 @import 'shared/styles/colors';
 
-.flex-container {
+.navbar {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   background: $ink;
-}
-
-.flex-item {
-  padding: 10px;
   color: $white;
+
+  &__item {
+      padding: 10px;
+  }
 }
 
 </style>
