@@ -1,0 +1,6 @@
+{  
+  "profileOptions": [
+    { "id": 1, "label": "My Profile" },
+    { "id": 2, "label": "User Settings" }
+  ]
+}

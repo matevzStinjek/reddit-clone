@@ -12,10 +12,10 @@
     padding-left: 40px;
     background: $void;
     color: $smog;
-}
 
-.form-control:hover {
+    &:hover {
       border: 2px solid $white;
+    }
 }
 
 .search__icon {
@@ -25,5 +25,4 @@
     line-height: 40px;
     color: $smog;
 }
-
 </style>

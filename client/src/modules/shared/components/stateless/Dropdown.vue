@@ -47,5 +47,4 @@ export default {
     background: $void;
     width: 128px;
 }
-
 </style>

@@ -21,7 +21,7 @@ module.exports = {
         'no-var': 'error',
         'prefer-const': 'error',
         'semi': ['error', 'never'],
-        'space-before-function-paren': 2,
+        'space-before-function-paren': 'error',
         'vue/attribute-hyphenation': 'error',
         'vue/component-name-in-template-casing': ['error', 'kebab-case'],
         'vue/html-closing-bracket-newline': 'error',
