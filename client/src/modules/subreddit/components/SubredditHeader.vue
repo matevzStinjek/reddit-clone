@@ -1,66 +1,50 @@
 <template>
-    <header class="subreddit-header">
-        <div class="subreddit-header__image" />
-        <div class="subreddit-header__title text-left">
-            <img src="@/modules/subreddit/assets/androidLogo.png" alt="Subreddit Logo">
-            <span class="font-weight-bold logo">{{ title }}</span>
-            <b-button variant="dark join-button font-weight-bold" @click="isJoined = !isJoined" class="ml-3">{{ displayMessage() }}</b-button>
-            <div class="subreddit-name">
-                <p class="text-muted">{{ subredditName }}</p>
-            </div>
-            <div class="header-navbar">
-                <p :key="item.id" v-for="item in navbarItems" @click="toggleActive(item.id)" :class="{ active: item.isActive }" class="header-navbar__item">{{ item.title }}</p>
+    <div class="subreddit-header">
+        <div class="subreddit-header__banner" />
+        <div class="subreddit-header__description">
+            <img class="subreddit-header__image" src="@/modules/subreddit/assets/androidLogo.png" alt="Subreddit Logo">
+            <span class="subreddit-header__logo">{{ getTitle }}</span>
+            <custom-button class="subreddit-header__join-button" @click="onJoinClick()">{{ displayMessage }}</custom-button>
+            <p class="subreddit-header__name">r/{{ getTitle }}</p>
+            <div class="subreddit-header__navbar">
+                <p :key="item.id" v-for="item in mappedItems" @click="onItemClick(item.id)" :class="{ active: item.isActive }" class="subreddit-header__navbar-item">{{ item.title }}</p>
             </div>
         </div>
-    </header>
+    </div>
 </template>
 
 <script>
+import CustomButton from 'shared/components/stateless/Button.vue'
+import { mapGetters } from 'vuex'
+
 export default {
-    data() {
+    components: {
+        CustomButton,
+    },
+    data () {
         return {
-            title: 'Android',
-            subredditName: 'r/Android',
             isJoined: false,
-            navbarItems: [
-                {
-                    id: 1,
-                    title: 'Posts',
-                    isActive: true,
-                },
-                {
-                    id: 2,
-                    title: 'Wiki',
-                    isActive: false,
-                },
-                {
-                    id: 3,
-                    title: 'Detailed Rules',
-                    isActive: false,
-                },
-                {
-                    id: 4,
-                    title: 'IRC',
-                    isActive: false,
-                },
-                {
-                    id: 5,
-                    title: 'Telegram',
-                    isActive: false,
-                },
-            ],
+            activeTabId: 1,
         }
     },
-    methods: {
+    computed: {
+        ...mapGetters({
+            getAllNavbarItems: 'getAllNavbarItems',
+            getTitle: 'getTitle',
+        }),
         displayMessage () {
             return this.isJoined ? 'Joined' : 'Join'
         },
-        toggleJoined () {
+        mappedItems () {
+            return this.getAllNavbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
+        },
+    },
+    methods: {
+        onJoinClick () {
             this.isJoined = !this.isJoined
         },
-        toggleActive(id) {
-            this.navbarItems.find(item => item.isActive).isActive = false
-            this.navbarItems.find(item => item.id === id).isActive = true
+        onItemClick (id) {
+            this.activeTabId = id
         },
     },
 }
@@ -68,67 +52,77 @@ export default {
 
 <style scoped lang="scss">
 @import 'shared/styles/colors.scss';
-@import 'subreddit/styles/variables.scss';
+$title-margin: 128px;
+$logo-margin-left: 32px;
 
 .subreddit-header {
-    height: $default-header-height;
     color: $white;
-    .logo {
+
+    &__logo {
         margin-left: $title-margin;
         font-size: 28px;
         color: $white;
+        font-weight: bold;
+    }
+
+    &__banner {
+        height: 80px;
+        background: $blue;
+    }
+
+    &__name {
+        margin-left: $title-margin;
+        color: $smog;
+    }
+
+    &__description {
+        height: 128px;
+        background: $dark;
+        position: relative;
+        text-align: left;
+
     }
 
     &__image {
-        height: 45%;
-        background: $android-header;
+        max-height: 80px;
+        border: solid 4px $white;
+        border-radius: 50%;
+        position: absolute;
+        left: $logo-margin-left;
+        top: -16px;
     }
 
-    &__title {
-        height: 55%;
-        background: $dark;
-        position: relative;
+    &__join-button {
+        width: 100px;
+        margin-left: 10px;
+        font-weight: bold;
+        border: 1px solid $white;
+        background: $void;
+    }
 
-        img {
-            height: 80%;
-            max-height: 80px;
-            border: solid 4px $white;
-            border-radius: 50%;
-            position: absolute;
-            left: $logo-margin-left;
-            top: -16px;
+    &__navbar {
+        display: flex;
+        color: $dust;
+        margin-left: $logo-margin-left;
+        margin-top: 32px;
+
+
+        .active {
+            color: $white;
+            font-weight: bold;
+            border-bottom: 3px solid $white;
         }
     }
 
-    .join-button {
-        width: 100px;
-        border: 1px solid $white;
-    }
-}
+     &__navbar-item {
+            margin-right: 10px;
+            padding: 0 10px;
+        }
 
-.subreddit-name {
-    margin-left: $title-margin;
-}
-
-.header-navbar {
-    display: flex;
-    color: $dust;
-    margin-left: $logo-margin-left;
-
-    &__item {
-        margin-right: 10px;
-        padding: 0 10px;
-    }
-
-    &__item:hover {
+    &__navbar-item:hover {
         color: $white;
         cursor: pointer;
     }
-
-    .active {
-        color: $white;
-        font-weight: bold;
-        border-bottom: 3px solid $white;
-    }
 }
+
 </style>

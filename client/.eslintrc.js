@@ -20,6 +20,7 @@ module.exports = {
         'no-unreachable': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-var': 'error',
         'prefer-const': 'error',
+        'space-before-function-paren': 2,
         'semi': ['error', 'never'],
         'vue/attribute-hyphenation': 'error',
         'vue/component-name-in-template-casing': ['error', 'kebab-case'],
