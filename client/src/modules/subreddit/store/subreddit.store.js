@@ -1,14 +1,21 @@
 import service from 'subreddit/services/subreddit.service'
+import constants from './constants.json'
 
 export default {
     state: {
-        navbarItems: service.getNavbarItems(),
-        title: service.getTitle(),
+        title: '',
     },
     getters: {
-        getAllNavbarItems: state => state.navbarItems,
+        getAllNavbarItems: () => constants.navbarOptions,
         getTitle: state => state.title,
     },
-    mutations: {},
-    actions: {},
+    mutations: {
+        fetchTitle: (state, data) => state.title = data,
+    },
+    actions: {
+        async fetchTitle ({ commit }) {
+            const title = await service.getTitle()
+            commit('fetchTitle', title)
+        },
+    },
 }

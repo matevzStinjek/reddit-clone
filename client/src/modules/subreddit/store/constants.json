@@ -1,0 +1,9 @@
+{
+  "navbarOptions": [
+    { "id": "posts", "title": "Posts" },
+    { "id": "wiki", "title": "Wiki" },
+    { "id": "detailed-rules", "title": "Detailed Rules" },
+    { "id": "irc", "title": "IRC" },
+    { "id": "telegram", "title": "Telegram" }
+  ]
+}

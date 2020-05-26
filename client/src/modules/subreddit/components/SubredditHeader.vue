@@ -4,34 +4,31 @@
         <div class="subreddit-header__description">
             <img class="subreddit-header__image" src="@/modules/subreddit/assets/androidLogo.png" alt="Subreddit Logo">
             <span class="subreddit-header__logo">{{ getTitle }}</span>
-            <custom-button class="subreddit-header__join-button" @click="onJoinClick()">{{ displayMessage }}</custom-button>
-            <p class="subreddit-header__name">r/{{ getTitle }}</p>
+            <button-element class="subreddit-header__join-button" @click="onJoinClick()">{{ displayMessage }}</button-element>
+            <div class="subreddit-header__name">r/{{ getTitle }}</div>
             <div class="subreddit-header__navbar">
-                <p :key="item.id" v-for="item in mappedItems" @click="onItemClick(item.id)" :class="{ active: item.isActive }" class="subreddit-header__navbar-item">{{ item.title }}</p>
+                <div :key="id" v-for="{id, isActive, title} in mappedItems" @click="onItemClick(id)" :class="{ active: isActive }" class="subreddit-header__navbar-item">{{ title }}</div>
             </div>
         </div>
     </div>
 </template>
 
 <script>
-import CustomButton from 'shared/components/stateless/Button.vue'
-import { mapGetters } from 'vuex'
+import Button from 'shared/components/stateless/Button.vue'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     components: {
-        CustomButton,
+        buttonElement: Button,
     },
     data () {
         return {
             isJoined: false,
-            activeTabId: 1,
+            activeTabId: 'posts',
         }
     },
     computed: {
-        ...mapGetters({
-            getAllNavbarItems: 'getAllNavbarItems',
-            getTitle: 'getTitle',
-        }),
+        ...mapGetters(['getAllNavbarItems', 'getTitle']),
         displayMessage () {
             return this.isJoined ? 'Joined' : 'Join'
         },
@@ -39,7 +36,12 @@ export default {
             return this.getAllNavbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
         },
     },
+    created () {
+        this.fetchNavbarItems()
+        this.fetchTitle()
+    },
     methods: {
+        ...mapActions(['fetchNavbarItems', 'fetchTitle']),
         onJoinClick () {
             this.isJoined = !this.isJoined
         },
@@ -52,6 +54,7 @@ export default {
 
 <style scoped lang="scss">
 @import 'shared/styles/colors.scss';
+
 $title-margin: 128px;
 $logo-margin-left: 32px;
 
@@ -124,5 +127,4 @@ $logo-margin-left: 32px;
         cursor: pointer;
     }
 }
-
 </style>
