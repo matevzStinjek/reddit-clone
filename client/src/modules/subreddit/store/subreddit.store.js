@@ -6,11 +6,11 @@ export default {
         title: '',
     },
     getters: {
-        getAllNavbarItems: () => constants.navbarOptions,
+        getNavbarItems: () => constants.navbarOptions,
         getTitle: state => state.title,
     },
     mutations: {
-        fetchTitle: (state, data) => state.title = data,
+        SET_TITLE: (state, data) => state.title = data,
     },
     actions: {
         initialise ({ dispatch }) {
@@ -18,7 +18,7 @@ export default {
         },
         async fetchTitle ({ commit }) {
             const title = await service.getTitle()
-            commit('fetchTitle', title)
+            commit('SET_TITLE', title)
         },
     },
 }

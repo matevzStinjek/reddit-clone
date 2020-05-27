@@ -29,14 +29,14 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'getAllNavbarItems',
+            'getNavbarItems',
             'getTitle',
         ]),
         displayMessage () {
             return this.isJoined ? 'Joined' : 'Join'
         },
         mappedItems () {
-            return this.getAllNavbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
+            return this.getNavbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
         },
     },
     methods: {
