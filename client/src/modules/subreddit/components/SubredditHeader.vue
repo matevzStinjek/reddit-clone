@@ -3,7 +3,7 @@
         <div class="subreddit-header__banner" />
         <div class="subreddit-header__description">
             <img class="subreddit-header__image" src="@/modules/subreddit/assets/androidLogo.png" alt="Subreddit Logo">
-            <span class="subreddit-header__logo">{{ getTitle }}</span>
+            <div class="subreddit-header__logo">{{ getTitle }}</div>
             <button-element class="subreddit-header__join-button" @click="onJoinClick()">{{ displayMessage }}</button-element>
             <div class="subreddit-header__name">r/{{ getTitle }}</div>
             <div class="subreddit-header__navbar">
@@ -50,27 +50,14 @@ export default {
 <style scoped lang="scss">
 @import 'shared/styles/colors.scss';
 
-$title-margin: 128px;
 $logo-margin-left: 32px;
 
 .subreddit-header {
     color: $white;
 
-    &__logo {
-        margin-left: $title-margin;
-        font-size: 28px;
-        color: $white;
-        font-weight: bold;
-    }
-
     &__banner {
         height: 80px;
         background: $blue;
-    }
-
-    &__name {
-        margin-left: $title-margin;
-        color: $smog;
     }
 
     &__description {
@@ -78,16 +65,22 @@ $logo-margin-left: 32px;
         background: $dark;
         position: relative;
         text-align: left;
-
     }
 
     &__image {
         max-height: 80px;
         border: solid 4px $white;
         border-radius: 50%;
-        position: absolute;
         left: $logo-margin-left;
-        top: -16px;
+        margin-top: -16px;
+        margin: -16px 16px 0 32px;
+    }
+
+    &__logo {
+        font-size: 28px;
+        color: $white;
+        font-weight: bold;
+        display: inline;
     }
 
     &__join-button {
@@ -98,12 +91,18 @@ $logo-margin-left: 32px;
         background: $void;
     }
 
+    &__name {
+        color: $smog;
+        margin-top: -16px;
+        margin-left: 128px;
+    }
+
     &__navbar {
         display: flex;
         color: $dust;
         margin-left: $logo-margin-left;
-        margin-top: 32px;
-
+        position: absolute;
+        bottom: 0;
 
         .active {
             color: $white;
