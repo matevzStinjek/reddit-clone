@@ -7,10 +7,19 @@
 
 <script>
 import Navbar from 'core/components/Navbar.vue'
+import { mapActions } from 'vuex'
 
 export default {
     components: {
         Navbar,
+    },
+    created () {
+        this.initialise()
+    },
+    methods: {
+        ...mapActions([
+            'initialise',
+        ]),
     },
 }
 </script>

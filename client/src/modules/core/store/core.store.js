@@ -4,24 +4,22 @@ import constants from './constants.json'
 export default {
     state: {
         subreddits: [],
-        profileOptions: [],
     },
     getters: {
         allSubreddits: state => state.subreddits,
-        allProfileOptions: state => state.profileOptions,
+        allProfileOptions: () => constants.profileOptions,
     },
     mutations: {
         fetchSubreddits: (state, data) => state.subreddits = data,
-        fetchProfileOptions: (state, data) => state.profileOptions = data,
     },
     actions: {
+        initialise ({ dispatch }) {
+            dispatch('fetchSubreddits')
+        },
+
         async fetchSubreddits ({ commit }) {
             const data = await service.fetchSubreddits()
             commit('fetchSubreddits', data)
-        },
-        async fetchProfileOptions ({ commit }) {
-            const data = await constants.profileOptions
-            commit('fetchProfileOptions', data)
         },
     },
 }

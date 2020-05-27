@@ -20,7 +20,7 @@
 <script>
 import Search from 'shared/components/stateless/Search.vue'
 import Dropdown from 'shared/components/stateless/Dropdown.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
     components: {
@@ -34,19 +34,11 @@ export default {
         }
     },
     computed: {
-        ...mapGetters({
-            allSubreddits: 'allSubreddits',
-            allProfileOptions: 'allProfileOptions',
-        }),
+        ...mapGetters([
+            'allSubreddits',
+            'allProfileOptions',
+        ]),
     },
-    created ()  {
-        this.fetchSubreddits()
-        this.fetchProfileOptions()
-    },
-    methods: {
-        ...mapActions(["fetchSubreddits", "fetchProfileOptions"]),
-    },
-
 }
 </script>
 
