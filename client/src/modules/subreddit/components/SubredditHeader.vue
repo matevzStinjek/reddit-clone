@@ -28,7 +28,10 @@ export default {
         }
     },
     computed: {
-        ...mapGetters(['getAllNavbarItems', 'getTitle']),
+        ...mapGetters([
+            'getAllNavbarItems',
+            'getTitle',
+        ]),
         displayMessage () {
             return this.isJoined ? 'Joined' : 'Join'
         },
