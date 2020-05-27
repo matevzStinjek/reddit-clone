@@ -4,14 +4,14 @@
         <dropdown
             class="navbar__item"
             v-model="selectedSubreddit"
-            :options="allSubreddits"
+            :options="subreddits"
             label="Home"
         />
         <search class="navbar__item" />
         <dropdown
             class="navbar__item"
             v-model="selectedProfileSetting"
-            :options="allProfileOptions"
+            :options="profileOptions"
             label="Username"
         />
     </div>
@@ -35,8 +35,8 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'allSubreddits',
-            'allProfileOptions',
+            'subreddits',
+            'profileOptions',
         ]),
     },
 }

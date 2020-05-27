@@ -6,20 +6,19 @@ export default {
         subreddits: [],
     },
     getters: {
-        allSubreddits: state => state.subreddits,
-        allProfileOptions: () => constants.profileOptions,
+        subreddits: state => state.subreddits,
+        profileOptions: () => constants.profileOptions,
     },
     mutations: {
-        fetchSubreddits: (state, data) => state.subreddits = data,
+        SET_SUBREDDITS: (state, data) => state.subreddits = data,
     },
     actions: {
         initialise ({ dispatch }) {
             dispatch('fetchSubreddits')
         },
-
         async fetchSubreddits ({ commit }) {
             const data = await service.fetchSubreddits()
-            commit('fetchSubreddits', data)
+            commit('SET_SUBREDDITS', data)
         },
     },
 }
