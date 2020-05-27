@@ -9,6 +9,21 @@
     </div>
 </template>
 
+<script>
+import { mapActions }  from 'vuex'
+
+export default {
+    created () {
+        this.initialise()
+    },
+    methods: {
+        ...mapActions([
+            'initialise',
+        ]),
+    },
+}
+</script>
+
 <style lang="scss">
 @import 'core/styles/bootstrap';
 

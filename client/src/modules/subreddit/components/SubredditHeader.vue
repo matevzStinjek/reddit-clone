@@ -15,7 +15,7 @@
 
 <script>
 import Button from 'shared/components/stateless/Button.vue'
-import { mapGetters, mapActions } from 'vuex'
+import { mapGetters } from 'vuex'
 
 export default {
     components: {
@@ -36,12 +36,7 @@ export default {
             return this.getAllNavbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
         },
     },
-    created () {
-        this.fetchNavbarItems()
-        this.fetchTitle()
-    },
     methods: {
-        ...mapActions(['fetchNavbarItems', 'fetchTitle']),
         onJoinClick () {
             this.isJoined = !this.isJoined
         },

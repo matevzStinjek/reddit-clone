@@ -13,6 +13,9 @@ export default {
         fetchTitle: (state, data) => state.title = data,
     },
     actions: {
+        initialise ({ dispatch }) {
+            dispatch('fetchTitle')
+        },
         async fetchTitle ({ commit }) {
             const title = await service.getTitle()
             commit('fetchTitle', title)
