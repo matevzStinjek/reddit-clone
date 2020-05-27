@@ -3,11 +3,11 @@ import constants from './constants.json'
 
 export default {
     state: {
-        title: '',
+        title: null,
     },
     getters: {
-        getNavbarItems: () => constants.navbarOptions,
-        getTitle: state => state.title,
+        navbarItems: () => constants.navbarOptions,
+        title: state => state.title,
     },
     mutations: {
         SET_TITLE: (state, data) => state.title = data,

@@ -3,11 +3,17 @@
         <div class="subreddit-header__banner" />
         <div class="subreddit-header__description">
             <img class="subreddit-header__image" src="@/modules/subreddit/assets/androidLogo.png" alt="Subreddit Logo">
-            <div class="subreddit-header__logo">{{ getTitle }}</div>
+            <div class="subreddit-header__logo">{{ title }}</div>
             <button-element class="subreddit-header__join-button" @click="onJoinClick()">{{ displayMessage }}</button-element>
-            <div class="subreddit-header__name">r/{{ getTitle }}</div>
+            <div class="subreddit-header__name">r/{{ title }}</div>
             <div class="subreddit-header__navbar">
-                <div :key="id" v-for="{id, isActive, title} in mappedItems" @click="onItemClick(id)" :class="{ active: isActive }" class="subreddit-header__navbar-item">{{ title }}</div>
+                <div
+                    v-for="{id, isActive, title} in mappedItems"
+                    :key="id"
+                    class="subreddit-header__navbar-item"
+                    :class="{ active: isActive }"
+                    @click="onItemClick(id)"
+                >{{ title }}</div>
             </div>
         </div>
     </div>
@@ -29,14 +35,14 @@ export default {
     },
     computed: {
         ...mapGetters([
-            'getNavbarItems',
-            'getTitle',
+            'navbarItems',
+            'title',
         ]),
         displayMessage () {
             return this.isJoined ? 'Joined' : 'Join'
         },
         mappedItems () {
-            return this.getNavbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
+            return this.navbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
         },
     },
     methods: {
@@ -65,7 +71,7 @@ $logo-margin-left: 32px;
 
     &__description {
         height: 128px;
-        background: $dark;
+        background: $slate;
         position: relative;
         text-align: left;
     }

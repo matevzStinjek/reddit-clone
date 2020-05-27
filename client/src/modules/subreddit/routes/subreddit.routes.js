@@ -1,6 +1,6 @@
 export default [
     {
-        path: '/r/subreddit',
+        path: '/r/*',
         name: 'Subreddit',
         component: () => import(/* webpackChunkName: "subreddit" */ 'subreddit/views/SubredditView.vue'),
     },

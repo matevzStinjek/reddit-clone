@@ -12,6 +12,7 @@ module.exports = {
     },
     rules: {
         'comma-dangle': ['error', 'always-multiline'],
+        'eol-last': 'error',
         'indent': ['error', 4],
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
