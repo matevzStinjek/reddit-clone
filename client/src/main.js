@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import VueCompositionApi from '@vue/composition-api'
-import { BootstrapVue } from 'bootstrap-vue'
+import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
 import { RouterModule } from '@/modules/router'
 import { StoreModule } from '@/modules/store'
 import { CoreModule } from '@/modules/core'
@@ -9,6 +9,7 @@ import { SubredditModule } from '@/modules/subreddit'
 Vue.config.productionTip = false
 
 Vue.use(BootstrapVue)
+Vue.use(BootstrapVueIcons)
 Vue.use(VueCompositionApi)
 
 function bootstrap () {

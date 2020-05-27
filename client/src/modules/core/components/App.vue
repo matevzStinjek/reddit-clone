@@ -1,18 +1,18 @@
 <template>
     <div id="app">
-        <div id="nav">
-            <router-link to="/r/subreddit">r/Android</router-link>
-        </div>
-        <div />
-        <img>
+        <navbar />
         <router-view />
     </div>
 </template>
 
 <script>
-import { mapActions }  from 'vuex'
+import Navbar from 'core/components/Navbar.vue'
+import { mapActions } from 'vuex'
 
 export default {
+    components: {
+        Navbar,
+    },
     created () {
         this.initialise()
     },
@@ -26,6 +26,12 @@ export default {
 
 <style lang="scss">
 @import 'core/styles/bootstrap';
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
 #app {
     font-family: Avenir, Helvetica, Arial, sans-serif;
