@@ -5,7 +5,6 @@ const resolve = dir => path.resolve(__dirname, dir)
 module.exports = {
     chainWebpack: config => {
         config.resolve.alias
-            .set('about', resolve('src/modules/about'))
             .set('core', resolve('src/modules/core'))
             .set('home', resolve('src/modules/home'))
             .set('shared', resolve('src/modules/shared'))

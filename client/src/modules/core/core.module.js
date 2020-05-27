@@ -6,12 +6,12 @@ export class CoreModule {
         return 'core'
     }
 
-    constructor(router, store) {
+    constructor (router, store) {
         this.router = router
         this.store = store
     }
 
-    install(Vue) {
+    install (Vue) {
         this.vm = new Vue({
             router: this.router,
             store: this.store,
