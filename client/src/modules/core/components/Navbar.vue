@@ -5,6 +5,7 @@
             class="navbar__item"
             v-model="selectedSubreddit"
             :options="subreddits"
+            @label="onLabel"
             label="Home"
         />
         <search class="navbar__item" />
@@ -38,6 +39,11 @@ export default {
             'subreddits',
             'profileOptions',
         ]),
+    },
+    methods: {
+        onLabel (label) {
+            this.$router.push('/' + label)
+        },
     },
 }
 </script>

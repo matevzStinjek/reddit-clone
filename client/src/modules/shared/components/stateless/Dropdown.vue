@@ -5,7 +5,7 @@
             :key="option.id"
             :disabled="option.isDisabled"
             :active="option.isSelected"
-            @click="onClick(option.id)"
+            @click="onClick(option.id, option.label)"
         >{{ option.label }}</b-dropdown-item>
     </b-dropdown>
 </template>
@@ -33,8 +33,9 @@ export default {
         },
     },
     methods: {
-        onClick (id) {
+        onClick (id, label) {
             this.$emit('input', id)
+            this.$emit('label', label)
         },
     },
 }
