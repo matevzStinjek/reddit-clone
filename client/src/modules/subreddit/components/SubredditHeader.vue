@@ -8,10 +8,10 @@
             <div class="subreddit-header__name">r/{{ title }}</div>
             <div class="subreddit-header__navbar">
                 <div
-                    v-for="{id, isActive, title} in mappedItems"
+                    v-for="{ id, isActive, title } in mappedItems"
                     :key="id"
                     class="subreddit-header__navbar-item"
-                    :class="{ active: isActive }"
+                    :class="{ active: isActive } | prefix('subreddit-header--')"
                     @click="onItemClick(id)"
                 >{{ title }}</div>
             </div>
@@ -112,13 +112,13 @@ $logo-margin-left: 32px;
         margin-left: $logo-margin-left;
         position: absolute;
         bottom: 0;
+    }
 
-        .active {
+    &--active {
             color: $white;
             font-weight: bold;
             border-bottom: 3px solid $white;
         }
-    }
 
      &__navbar-item {
             margin-right: 10px;
