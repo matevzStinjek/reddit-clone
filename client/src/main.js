@@ -1,6 +1,5 @@
 import Vue from 'vue'
-import VueCompositionApi from '@vue/composition-api'
-import { BootstrapVue, BootstrapVueIcons } from 'bootstrap-vue'
+import { DependencyInjector } from '@/dependencies'
 import { RouterModule } from '@/modules/router'
 import { StoreModule } from '@/modules/store'
 import { CoreModule } from '@/modules/core'
@@ -8,11 +7,10 @@ import { SubredditModule } from '@/modules/subreddit'
 
 Vue.config.productionTip = false
 
-Vue.use(BootstrapVue)
-Vue.use(BootstrapVueIcons)
-Vue.use(VueCompositionApi)
-
 function bootstrap () {
+    const dependencyInjector = new DependencyInjector()
+    dependencyInjector.install(Vue)
+
     const routerModule = new RouterModule()
     routerModule.install(Vue)
 

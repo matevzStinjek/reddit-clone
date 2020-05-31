@@ -13,7 +13,7 @@ module.exports = {
     rules: {
         'comma-dangle': ['error', 'always-multiline'],
         'eol-last': 'error',
-        'indent': ['error', 4],
+        'indent': ['error', 4, { 'SwitchCase': 1 }],
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
         'no-else-return': 'error',
