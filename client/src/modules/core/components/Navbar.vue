@@ -42,7 +42,8 @@ export default {
     },
     methods: {
         onSubredditSelect (id) {
-            this.$router.push(`/${this.subreddits.find(subreddit => subreddit.id === id).label}`)
+            const subreddit = this.subreddits.find(subreddit => subreddit.id === id).label
+            this.$router.push(`/${subreddit}`).catch(() => {})
         },
     },
 }

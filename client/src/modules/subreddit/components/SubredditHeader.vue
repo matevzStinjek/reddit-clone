@@ -1,10 +1,10 @@
 <template>
     <div class="subreddit-header">
-        <div class="subreddit-header__banner" />
+        <div ref="banner" class="subreddit-header__banner" />
         <div class="subreddit-header__description">
-            <img class="subreddit-header__image" src="@/modules/subreddit/assets/androidLogo.png" alt="Subreddit Logo">
+            <img class="subreddit-header__image" :src="logoSrc" alt="Subreddit Logo">
             <div class="subreddit-header__logo">{{ title }}</div>
-            <button-element class="subreddit-header__join-button" @click="onJoinClick()">{{ displayMessage }}</button-element>
+            <button-element class="subreddit-header__join-button" @click="onButtonClick()">{{ displayMessage }}</button-element>
             <div class="subreddit-header__name">r/{{ title }}</div>
             <div class="subreddit-header__navbar">
                 <div
@@ -21,7 +21,7 @@
 
 <script>
 import Button from 'shared/components/stateless/Button.vue'
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     components: {
@@ -29,7 +29,7 @@ export default {
     },
     data () {
         return {
-            isJoined: false,
+            // logoSrc: this.logo !== undefined ? this.logo : require('@/modules/subreddit/assets/barca.png'),
             activeTabId: 'posts',
         }
     },
@@ -37,17 +37,29 @@ export default {
         ...mapGetters([
             'navbarItems',
             'title',
+            'isUserJoined',
+            'headerColor',
+            'logo',
         ]),
         displayMessage () {
-            return this.isJoined ? 'Joined' : 'Join'
+            return this.isUserJoined ? 'Joined' : 'Join'
         },
         mappedItems () {
             return this.navbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
         },
+        logoSrc () {
+            return this.logo
+        },
+    },
+    mounted () {
+        this.$refs.banner.style.background = this.headerColor
     },
     methods: {
-        onJoinClick () {
-            this.isJoined = !this.isJoined
+        ...mapActions([
+            'toggleJoinedStatus',
+        ]),
+        onButtonClick () {
+            this.toggleJoinedStatus()
         },
         onItemClick (id) {
             this.activeTabId = id
@@ -66,7 +78,6 @@ $logo-margin-left: 32px;
 
     &__banner {
         height: 80px;
-        background: $blue;
     }
 
     &__description {
