@@ -1,11 +1,17 @@
 export default {
-    info: {
-        title: 'Android',
-        isUserJoined: true,
-        headerColor: '#17e387',
-        logo: require('@/modules/subreddit/assets/androidLogo.png'),
+    isUserJoined: false,
+    toggleJoined () {
+        this.isUserJoined = !this.isUserJoined
+        return this.isUserJoined
     },
+    fetchJoinedStatus () { return new Promise(resolve => resolve(this.isUserJoined)) },
     fetchSubredditInfo () {
-        return this.info
+        return new Promise(resolve => {
+            resolve({
+                title: 'Android',
+                headerColor: '#17e387',
+                logo: require('@/modules/subreddit/assets/androidLogo.png'),
+            })
+        })
     },
 }
