@@ -3,9 +3,9 @@
         <div ref="banner" class="subreddit-header__banner" />
         <div class="subreddit-header__description">
             <img class="subreddit-header__image" :src="logoSrc" alt="Subreddit Logo">
-            <div class="subreddit-header__logo">{{ title }}</div>
+            <div class="subreddit-header__logo">{{ info.title }}</div>
             <button-element class="subreddit-header__join-button" @click="onButtonClick()">{{ displayMessage }}</button-element>
-            <div class="subreddit-header__name">r/{{ title }}</div>
+            <div class="subreddit-header__name">r/{{ info.title }}</div>
             <div class="subreddit-header__navbar">
                 <div
                     v-for="{ id, isActive, title } in mappedItems"
@@ -29,17 +29,14 @@ export default {
     },
     data () {
         return {
-            // logoSrc: this.logo !== undefined ? this.logo : require('@/modules/subreddit/assets/barca.png'),
             activeTabId: 'posts',
         }
     },
     computed: {
         ...mapGetters([
             'navbarItems',
-            'title',
             'isUserJoined',
-            'headerColor',
-            'logo',
+            'info',
         ]),
         displayMessage () {
             return this.isUserJoined ? 'Joined' : 'Join'
@@ -48,11 +45,11 @@ export default {
             return this.navbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
         },
         logoSrc () {
-            return this.logo
+            return this.info.logo
         },
     },
     mounted () {
-        this.$refs.banner.style.background = this.headerColor
+        this.$refs.banner.style.background = this.info.headerColor
     },
     methods: {
         ...mapActions([
