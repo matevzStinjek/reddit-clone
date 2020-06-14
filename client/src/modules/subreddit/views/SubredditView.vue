@@ -1,14 +1,13 @@
 <template>
-    <h1>Hello from view</h1>
+    <create-post />
 </template>
 
 <script>
+import CreatePost from 'subreddit/components/CreatePost.vue'
 
 export default {
-
+    components: {
+        CreatePost,
+    },
 }
 </script>
-
-<style>
-
-</style>
