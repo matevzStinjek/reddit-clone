@@ -1,8 +1,8 @@
 <template>
     <div class="subreddit-header">
-        <div ref="banner" class="subreddit-header__banner" />
+        <div :style="{ color: info.headerColor }" class="subreddit-header__banner" />
         <div class="subreddit-header__description">
-            <img class="subreddit-header__image" :src="logoSrc" alt="Subreddit Logo">
+            <img class="subreddit-header__image" :src="info.logo" alt="Subreddit Logo">
             <div class="subreddit-header__logo">{{ info.title }}</div>
             <button-element class="subreddit-header__join-button" @click="onButtonClick()">{{ displayMessage }}</button-element>
             <div class="subreddit-header__name">r/{{ info.title }}</div>
@@ -44,12 +44,6 @@ export default {
         mappedItems () {
             return this.navbarItems.map(item => ({ ...item, isActive: item.id === this.activeTabId }))
         },
-        logoSrc () {
-            return this.info.logo
-        },
-    },
-    mounted () {
-        this.$refs.banner.style.background = this.info.headerColor
     },
     methods: {
         ...mapActions([
@@ -75,6 +69,7 @@ $logo-margin-left: 32px;
 
     &__banner {
         height: 80px;
+        background-color: currentColor;
     }
 
     &__description {
