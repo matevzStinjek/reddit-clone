@@ -1,13 +1,13 @@
 <template>
-    <create-post />
+    <categories />
 </template>
 
 <script>
-import CreatePost from 'subreddit/components/CreatePost.vue'
+import Categories from 'subreddit/components/Categories.vue'
 
 export default {
     components: {
-        CreatePost,
+        Categories,
     },
 }
 </script>
