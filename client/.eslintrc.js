@@ -12,6 +12,7 @@ module.exports = {
     },
     rules: {
         'comma-dangle': ['error', 'always-multiline'],
+        'eol-last': 'error',
         'indent': ['error', 4, { 'SwitchCase': 1 }],
         'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off',
@@ -20,6 +21,7 @@ module.exports = {
         'no-unreachable': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
         'no-var': 'error',
         'prefer-const': 'error',
+        'space-before-function-paren': 'error',
         'semi': ['error', 'never'],
         'space-before-function-paren': 'error',
         'vue/attribute-hyphenation': 'error',

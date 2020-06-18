@@ -3,9 +3,10 @@
         <div class="navbar__item">Reddit.com</div>
         <dropdown
             class="navbar__item"
-            v-model="selectedSubreddit"
+            :value="selectedSubreddit"
             :options="subreddits"
             label="Home"
+            @input="onSubredditSelect"
         />
         <search class="navbar__item" />
         <dropdown
@@ -38,6 +39,12 @@ export default {
             'subreddits',
             'profileOptions',
         ]),
+    },
+    methods: {
+        onSubredditSelect (id) {
+            const subreddit = this.subreddits.find(subreddit => subreddit.id === id).label
+            this.$router.push(`/${subreddit}`).catch(() => {})
+        },
     },
 }
 </script>
