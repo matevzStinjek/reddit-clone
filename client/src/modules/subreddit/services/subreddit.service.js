@@ -10,7 +10,7 @@ export default {
             resolve({
                 title: 'Android',
                 headerColor: '#17e387',
-                logo: require('@/modules/subreddit/assets/androidLogo.png'),
+                logo: 'https://b.thumbs.redditmedia.com/fI7UdJ-vgpnLdxy28QdKIYBGg-fEo7KxQ_PS7pn4QzM.png',
             })
         })
     },

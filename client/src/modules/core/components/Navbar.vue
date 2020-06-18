@@ -5,8 +5,8 @@
             class="navbar__item"
             :value="selectedSubreddit"
             :options="subreddits"
-            @input="onSubredditSelect"
             label="Home"
+            @input="onSubredditSelect"
         />
         <search class="navbar__item" />
         <dropdown

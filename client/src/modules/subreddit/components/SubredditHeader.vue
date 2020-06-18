@@ -1,10 +1,10 @@
 <template>
     <div class="subreddit-header">
-        <div :style="{ color: info.headerColor }" class="subreddit-header__banner" />
+        <div class="subreddit-header__banner" :style="{ color: info.headerColor }" />
         <div class="subreddit-header__description">
             <img class="subreddit-header__image" :src="info.logo" alt="Subreddit Logo">
             <div class="subreddit-header__logo">{{ info.title }}</div>
-            <button-element class="subreddit-header__join-button" @click="onButtonClick()">{{ displayMessage }}</button-element>
+            <button-element class="subreddit-header__join-button" @click="onButtonClick">{{ displayMessage }}</button-element>
             <div class="subreddit-header__name">r/{{ info.title }}</div>
             <div class="subreddit-header__navbar">
                 <div
