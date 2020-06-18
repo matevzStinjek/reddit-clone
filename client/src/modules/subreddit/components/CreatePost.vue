@@ -13,6 +13,8 @@
     display: flex;
     background: $void;
     padding: 8px;
+    border-radius: 8px;
+    border: 2px solid $ash;
 
     &__avatar {
       max-width: 100%;
@@ -23,6 +25,11 @@
 
     &__search {
       background: $ink;
+      border: 1px solid $void;
+
+      &:hover {
+        border: 1px solid $white;
+      }
     }
 
     &__link {

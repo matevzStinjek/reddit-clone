@@ -1,7 +1,9 @@
 <template>
     <div>
         <subreddit-header />
-        <create-post />
+        <div class="grid-wrapper">
+            <create-post />
+        </div>
     </div>
 </template>
 
@@ -17,3 +19,13 @@ export default {
     },
 }
 </script>
+
+<style scoped lang="scss">
+
+.grid-wrapper {
+    display: grid;
+    grid-template-columns: 4fr 1fr;
+    gap: 16px;
+    padding: 16px;
+}
+</style>
