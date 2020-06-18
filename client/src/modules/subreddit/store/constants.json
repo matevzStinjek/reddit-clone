@@ -5,5 +5,10 @@
     { "id": "detailed-rules", "title": "Detailed Rules" },
     { "id": "irc", "title": "IRC" },
     { "id": "telegram", "title": "Telegram" }
+  ],
+  "categories": [
+    { "id": "best", "title": "Best", "icon": "lightning-fill" },
+    { "id": "new", "title": "New", "icon": "sun" },
+    { "id": "top", "title": "Top", "icon": "building" }    
   ]
 }
