@@ -5,11 +5,13 @@ export default {
     state: {
         subredditInfo: null,
         isUserJoined: null,
+        categories: null,
     },
     getters: {
         navbarItems: () => constants.navbarOptions,
         isUserJoined: state => state.isUserJoined,
         info: state => state.subredditInfo,
+        categories: () => constants.categories,
     },
     mutations: {
         SET_JOINED: (state, data) => state.isUserJoined = data,
