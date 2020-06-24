@@ -5,5 +5,11 @@
     { "id": "detailed-rules", "title": "Detailed Rules" },
     { "id": "irc", "title": "IRC" },
     { "id": "telegram", "title": "Telegram" }
-  ]
+  ],
+  "communityConstants": {
+    "heading": "About Community",
+    "membersText": "Members",
+    "onlineText": "Online",
+    "buttonText": "Create Post"
+  }
 }
