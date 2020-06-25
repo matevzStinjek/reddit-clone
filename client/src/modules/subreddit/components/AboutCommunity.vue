@@ -39,7 +39,7 @@ export default {
             if (number < 0) return 'Negative number of members'
             if (number >= 1000 && number < 1000000) return (number/1000).toFixed(1) + 'k'
             if (number >= 1000000) return (number/1000000).toFixed(1) + 'm'
-            return number
+            return number.toString()
         },
     },
 }
