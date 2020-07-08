@@ -1,7 +1,11 @@
 <template>
     <div>
         <div :key="post.id" v-for="post in posts" class="post">
-            <div class="post__upvotes">{{ post.upvotes }}</div>
+            <div class="post__rating">
+                <b-icon-arrow-up class="post__upvotes" font-scale="2" />
+                {{ post.upvotes }}
+                <b-icon-arrow-down class="post__downvotes" font-scale="2" />
+            </div>
             <img class="post__image" :src="post.image">
             <div class="post__main-section">
                 <div class="post__title">{{ post.title }}</div>
@@ -67,6 +71,16 @@ $default-margin-left: 8px;
 
     &:hover {
         border: 1px solid $dust;
+    }
+
+    &__rating {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &__upvotes:hover, &__downvotes:hover {
+        color: $blue;
+        cursor: pointer;
     }
 
     &__image {
