@@ -2,9 +2,9 @@
     <div>
         <div :key="post.id" v-for="post in posts" class="post">
             <div class="post__rating">
-                <b-icon-arrow-up class="post__upvotes" font-scale="2" />
+                <b-icon-arrow-up class="post__upvotes" @click="onUpvoteClick(post.id)" font-scale="2" />
                 {{ post.upvotes }}
-                <b-icon-arrow-down class="post__downvotes" font-scale="2" />
+                <b-icon-arrow-down class="post__downvotes" @click="onDownvoteClick(post.id)" font-scale="2" />
             </div>
             <img class="post__image" :src="post.image">
             <div class="post__main-section">
@@ -20,7 +20,7 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
     computed: {
@@ -29,6 +29,9 @@ export default {
         ]),
     },
     methods: {
+        ...mapActions([
+            'upvotePost',
+        ]),
         timeSinceUpload (time) {
             // Check if the time given is valid
             const oldDate = new Date(time)
@@ -51,6 +54,9 @@ export default {
             if (months < 12) return `${months.toFixed(0)} months ago`
 
             return `${(months / 12).toFixed(0)} years ago`
+        },
+        onUpvoteClick (id) {
+            this.upvotePost(id)
         },
     },
 }
@@ -78,7 +84,12 @@ $default-margin-left: 8px;
         flex-direction: column;
     }
 
-    &__upvotes:hover, &__downvotes:hover {
+    &__upvotes:hover {
+        color: $orange;
+        cursor: pointer;
+    }
+
+    &__downvotes:hover {
         color: $blue;
         cursor: pointer;
     }

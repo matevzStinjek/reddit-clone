@@ -17,6 +17,7 @@ export default {
         SET_JOINED: (state, data) => state.isUserJoined = data,
         SET_SUBREDDIT_INFO: (state, data) => state.subredditInfo = data,
         SET_POSTS: (state, data) => state.posts = data,
+        SET_UPVOTES: (state, id) => state.posts.find(post => post.id === id).upvotes++,
     },
     actions: {
         initialise ({ commit }) {
@@ -33,6 +34,9 @@ export default {
         async toggleJoinedStatus ({ commit }) {
             const isUserJoined = await service.toggleJoined()
             commit('SET_JOINED', isUserJoined)
+        },
+        async upvotePost ({ commit }, id) {
+            commit('SET_UPVOTES', id)
         },
     },
 }
