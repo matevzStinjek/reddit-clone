@@ -2,9 +2,9 @@
     <div>
         <div :key="post.id" v-for="post in posts" class="post">
             <div class="post__rating">
-                <b-icon-arrow-up class="post__upvotes" @click="onUpvoteClick(post.id)" font-scale="2" />
+                <b-icon-arrow-up :class="{ post__upvoted: upvoted }" class="post__upvotes" @click="onUpvoteClick(post.id)" font-scale="2" />
                 {{ post.upvotes }}
-                <b-icon-arrow-down class="post__downvotes" @click="onDownvoteClick(post.id)" font-scale="2" />
+                <b-icon-arrow-down :class="{ post__downvoted: downvoted }" class="post__downvotes" @click="onDownvoteClick(post.id)" font-scale="2" />
             </div>
             <img class="post__image" :src="post.image">
             <div class="post__main-section">
@@ -23,6 +23,12 @@
 import { mapGetters, mapActions } from 'vuex'
 
 export default {
+    data () {
+        return {
+            upvoted: false,
+            downvoted: true,
+        }
+    },
     computed: {
         ...mapGetters([
             'posts',
@@ -57,9 +63,13 @@ export default {
             return `${(months / 12).toFixed(0)} years ago`
         },
         onUpvoteClick (id) {
+            this.upvoted = !this.upvoted
+            this.downvoted = !this.downvoted
             this.upvotePost(id)
         },
         onDownvoteClick (id) {
+            this.upvoted = !this.upvoted
+            this.downvoted = !this.downvoted
             this.downvotePost(id)
         },
     },
@@ -88,12 +98,12 @@ $default-margin-left: 8px;
         flex-direction: column;
     }
 
-    &__upvotes:hover {
+    &__upvotes:hover, &__upvoted {
         color: $orange;
         cursor: pointer;
     }
 
-    &__downvotes:hover {
+    &__downvotes:hover, &__downvoted {
         color: $blue;
         cursor: pointer;
     }
