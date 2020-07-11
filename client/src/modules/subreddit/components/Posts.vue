@@ -31,6 +31,7 @@ export default {
     methods: {
         ...mapActions([
             'upvotePost',
+            'downvotePost',
         ]),
         timeSinceUpload (time) {
             // Check if the time given is valid
@@ -57,6 +58,9 @@ export default {
         },
         onUpvoteClick (id) {
             this.upvotePost(id)
+        },
+        onDownvoteClick (id) {
+            this.downvotePost(id)
         },
     },
 }

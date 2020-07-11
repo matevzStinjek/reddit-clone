@@ -18,6 +18,9 @@ export default {
         SET_SUBREDDIT_INFO: (state, data) => state.subredditInfo = data,
         SET_POSTS: (state, data) => state.posts = data,
         SET_UPVOTES: (state, id) => state.posts.find(post => post.id === id).upvotes++,
+        SET_DOWNVOTES: (state, id) => {
+            if (state.posts.find(post => post.id === id).upvotes >= 1) state.posts.find(post => post.id === id).upvotes--
+        },
     },
     actions: {
         initialise ({ commit }) {
@@ -35,8 +38,11 @@ export default {
             const isUserJoined = await service.toggleJoined()
             commit('SET_JOINED', isUserJoined)
         },
-        async upvotePost ({ commit }, id) {
+        upvotePost ({ commit }, id) {
             commit('SET_UPVOTES', id)
+        },
+        downvotePost ({ commit }, id) {
+            commit('SET_DOWNVOTES', id)
         },
     },
 }

@@ -31,7 +31,7 @@ export default {
                     title: 'Ronaldo INJUSTICA',
                     user: 'xxDENIXDXX',
                     date: 'Tue Jul 07 2020 09:19:25 GMT+0200 (Central European Summer Time)',
-                    upvotes: 1999,
+                    upvotes: 3,
                     image: 'https://i.insider.com/4feb7debecad04ff37000020?width=400&format=jpeg',
                     commentsCount: '1049',
                 },
