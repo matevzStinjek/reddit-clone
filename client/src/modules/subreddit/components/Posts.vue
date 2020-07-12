@@ -2,9 +2,9 @@
     <div>
         <div :key="post.id" v-for="post in posts" class="post">
             <div class="post__rating">
-                <b-icon-arrow-up :class="{ post__upvoted: upvoted }" class="post__upvotes" @click="onUpvoteClick(post.id)" font-scale="2" />
+                <b-icon-arrow-up :class="{ post__upvoted: isUpvoted(post) }" class="post__upvotes" @click="onUpvoteClick(post.id)" font-scale="2" />
                 {{ post.upvotes }}
-                <b-icon-arrow-down :class="{ post__downvoted: downvoted }" class="post__downvotes" @click="onDownvoteClick(post.id)" font-scale="2" />
+                <b-icon-arrow-down :class="{ post__downvoted: false }" class="post__downvotes" @click="onDownvoteClick(post.id)" font-scale="2" />
             </div>
             <img class="post__image" :src="post.image">
             <div class="post__main-section">
@@ -25,8 +25,7 @@ import { mapGetters, mapActions } from 'vuex'
 export default {
     data () {
         return {
-            upvoted: false,
-            downvoted: true,
+            id: 'denixd',
         }
     },
     computed: {
@@ -38,6 +37,7 @@ export default {
         ...mapActions([
             'upvotePost',
             'downvotePost',
+            'removeUpvote',
         ]),
         timeSinceUpload (time) {
             // Check if the time given is valid
@@ -63,14 +63,22 @@ export default {
             return `${(months / 12).toFixed(0)} years ago`
         },
         onUpvoteClick (id) {
-            this.upvoted = !this.upvoted
-            this.downvoted = !this.downvoted
+            // Add user id to upvote array
+            const post = this.posts.find(post => post.id === id)
+            if (!post.upvoteIds.includes(this.id)) post.upvoteIds.push(this.id)
+            else {
+                const index = post.upvoteIds.indexOf(this.id)
+                post.upvoteIds.splice(index, 1)
+                this.removeUpvote(id)
+                return
+            }
             this.upvotePost(id)
         },
         onDownvoteClick (id) {
-            this.upvoted = !this.upvoted
-            this.downvoted = !this.downvoted
             this.downvotePost(id)
+        },
+        isUpvoted (post) {
+            return post.upvoteIds.includes(this.id)
         },
     },
 }

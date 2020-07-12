@@ -17,8 +17,8 @@ export default {
         SET_JOINED: (state, data) => state.isUserJoined = data,
         SET_SUBREDDIT_INFO: (state, data) => state.subredditInfo = data,
         SET_POSTS: (state, data) => state.posts = data,
-        SET_UPVOTES: (state, data) => state.posts.find(post => post.id === data.id).upvotes = data.upvote,
-        SET_DOWNVOTES: (state, data) => state.posts.find(post => post.id === data.id).upvotes = data.downvote,
+        SET_UPVOTES: (state, data) => state.posts.find(post => post.id === data.id).upvotes = data.upvotes,
+        SET_DOWNVOTES: (state, data) => state.posts.find(post => post.id === data.id).upvotes = data.downvotes,
     },
     actions: {
         initialise ({ commit }) {
@@ -39,8 +39,8 @@ export default {
         upvotePost ({ commit }, id) {
             service.fetchPosts()
                 .then(posts => {
-                    const upvote = ++posts.find(post => post.id === id).upvotes
-                    const data = { id, upvote }
+                    const upvotes = ++posts.find(post => post.id === id).upvotes
+                    const data = { id, upvotes }
                     commit('SET_UPVOTES', data)
                 })
         },
@@ -48,9 +48,16 @@ export default {
             service.fetchPosts()
                 .then(posts => {
                     const post = posts.find(post => post.id === id)
-                    const downvote = post.upvotes >= 1 ? --post.upvotes : 0
-                    const data = { id, downvote }
+                    const downvotes = post.upvotes >= 1 ? --post.upvotes : 0
+                    const data = { id, downvotes }
                     commit('SET_DOWNVOTES', data)
+                })
+        },
+        removeUpvote ({ commit }, id) {
+            service.fetchPosts()
+                .then(posts => {
+                    const upvotes = posts.find(post => post.id === id).upvotes
+                    commit('SET_UPVOTES', { id, upvotes })
                 })
         },
     },

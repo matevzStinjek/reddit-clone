@@ -25,6 +25,7 @@ export default {
                     upvotes: 700,
                     image: 'https://a.thumbs.redditmedia.com/ahDFuCfcFr6xO0H8KLG7syxK_B3zamgiP45e8Z6FVc8.png',
                     commentsCount: '44',
+                    upvoteIds: [],
                 },
                 {
                     id: 'ronaldoCry',
@@ -34,6 +35,7 @@ export default {
                     upvotes: 3,
                     image: 'https://i.insider.com/4feb7debecad04ff37000020?width=400&format=jpeg',
                     commentsCount: '1049',
+                    upvoteIds: [],
                 },
             ])
         })
