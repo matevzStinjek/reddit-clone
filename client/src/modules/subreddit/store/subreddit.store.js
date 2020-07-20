@@ -36,28 +36,26 @@ export default {
             const isUserJoined = await service.toggleJoined()
             commit('SET_JOINED', isUserJoined)
         },
-        upvotePost ({ commit }, id) {
+        upvotePost ({ commit }, data) {
             service.fetchPosts()
                 .then(posts => {
-                    const upvotes = ++posts.find(post => post.id === id).upvotes
-                    const data = { id, upvotes }
-                    commit('SET_UPVOTES', data)
+                    const post = posts.find(post => post.id === data.id)
+                    post.downvoteIds.splice(post.downvoteIds.indexOf(data.userId), 1)
+                    if (!post.upvoteIds.includes(data.userId)) service.upvotePost(post.id, data.userId)
+                    else service.removeUpvote(post.id, data.userId)
+                    const payload = { id: data.id, upvotes: post.upvotes }
+                    commit('SET_UPVOTES', payload)
                 })
         },
-        downvotePost ({ commit }, id) {
+        downvotePost ({ commit }, id, userId) {
             service.fetchPosts()
                 .then(posts => {
                     const post = posts.find(post => post.id === id)
+                    post.upvoteIds.splice(post.upvoteIds.indexOf(userId), 1)
+                    if (!post.downvoteIds.includes(userId)) post.downvoteIds.push(userId)
                     const downvotes = post.upvotes >= 1 ? --post.upvotes : 0
                     const data = { id, downvotes }
                     commit('SET_DOWNVOTES', data)
-                })
-        },
-        removeUpvote ({ commit }, id) {
-            service.fetchPosts()
-                .then(posts => {
-                    const upvotes = posts.find(post => post.id === id).upvotes
-                    commit('SET_UPVOTES', { id, upvotes })
                 })
         },
     },
