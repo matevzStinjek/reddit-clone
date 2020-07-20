@@ -17,7 +17,7 @@ export default {
             title: 'Ronaldo INJUSTICA',
             user: 'xxDENIXDXX',
             date: 'Tue Jul 07 2020 09:19:25 GMT+0200 (Central European Summer Time)',
-            upvotes: 3,
+            upvotes: 12,
             image: 'https://i.insider.com/4feb7debecad04ff37000020?width=400&format=jpeg',
             commentsCount: '1049',
             upvoteIds: [],
@@ -48,9 +48,19 @@ export default {
         post.upvotes++
         post.upvoteIds.push(userId)
     },
-    removeUpvote (id, userId) {
+    removeVote (id, userId, isUpvote) {
         const post = this.posts.find(post => post.id === id)
-        post.upvotes--
-        post.upvoteIds.splice(post.upvoteIds.indexOf(userId), 1)
+        if (isUpvote) {
+            post.upvotes--
+            post.upvoteIds.splice(post.upvoteIds.indexOf(userId), 1)
+        } else {
+            post.upvotes++
+            post.downvoteIds.splice(post.downvoteIds.indexOf(userId), 1)
+        }
+    },
+    downvotePost (id, userId) {
+        const post = this.posts.find(post => post.id === id)
+        post.upvotes >= 1 ? post.upvotes-- : post.upvotes = 0
+        post.downvoteIds.push(userId)
     },
 }

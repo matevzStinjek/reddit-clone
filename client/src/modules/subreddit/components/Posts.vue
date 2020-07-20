@@ -35,8 +35,7 @@ export default {
     },
     methods: {
         ...mapActions([
-            'upvotePost',
-            'downvotePost',
+            'giveVote',
         ]),
         timeSinceUpload (time) {
             // Check if the time given is valid
@@ -62,11 +61,12 @@ export default {
             return `${(months / 12).toFixed(0)} years ago`
         },
         onUpvoteClick (id) {
-            const data = {id, userId: this.id}
-            this.upvotePost(data)
+            const data = {id, userId: this.id, isUpvote: true}
+            this.giveVote(data)
         },
         onDownvoteClick (id) {
-            this.downvotePost(id, this.id)
+            const data = {id, userId: this.id, isUpvote: false}
+            this.giveVote(data)
         },
         isUpvoted (post) {
             return post.upvoteIds.includes(this.id)
