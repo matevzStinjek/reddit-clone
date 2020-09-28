@@ -26,6 +26,7 @@ export default {
 
 <style lang="scss">
 @import 'core/styles/bootstrap';
+@import 'shared/styles/colors.scss';
 
 * {
     margin: 0;
@@ -39,6 +40,10 @@ export default {
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+}
+
+body {
+    background: black;
 }
 
 #nav {
