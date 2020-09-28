@@ -10,37 +10,37 @@
 @import 'shared/styles/colors.scss';
 
 .component-wrapper {
-    display: flex;
-    background: $void;
-    padding: 8px;
-    border-radius: 8px;
-    border: 2px solid $ash;
+      display: flex;
+      background: $void;
+      padding: 8px;
+      border-radius: 8px;
+      border: 2px solid $ash;
 
-    &__avatar {
-      max-width: 100%;
-      max-height: 32px;
-      border-radius: 50%;
-      margin-right: 8px;
-    }
-
-    &__search {
-      background: $ink;
-      border: 1px solid $void;
-
-      &:hover {
-        border: 1px solid $white;
+      &__avatar {
+        max-width: 100%;
+        max-height: 32px;
+        border-radius: 50%;
+        margin-right: 8px;
       }
-    }
 
-    &__link {
-      margin-left: 8px;
-      color: $white;
-      font-size: 40px;
+      &__search {
+        background: $ink;
+        border: 1px solid $void;
 
-      &:hover {
-        background: $slate;
-        cursor: pointer;
+        &:hover {
+          border: 1px solid $white;
+        }
       }
-    }
+
+      &__link {
+        margin-left: 8px;
+        color: $white;
+        font-size: 40px;
+
+        &:hover {
+          background: $slate;
+          cursor: pointer;
+        }
+      }
 }
 </style>
