@@ -1,7 +1,7 @@
 <template>
-    <a class="chip" href="#" @click="onClick">
+    <div class="chip" href="#" @click="onClick">
         <slot />
-    </a>
+    </div>
 </template>
 
 <script>
@@ -24,9 +24,9 @@ export default {
     border-radius: 32px;
 
     &:hover {
-      text-decoration: none;
-      color: $white;
-      background: $slate;
+        text-decoration: none;
+        color: $white;
+        background: $slate;
     }
 }
 </style>

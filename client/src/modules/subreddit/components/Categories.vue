@@ -1,10 +1,10 @@
 <template>
-    <div class="categories-wrapper">
-        <div class="categories-wrapper__main-categories">
+    <div class="categories">
+        <div class="categories__list">
             <chip
                 v-for="{ id, isActive, title, icon } in mappedCategories"
                 :key="id"
-                :class="{ active: isActive } | prefix('categories-wrapper__category--')"
+                :class="{ active: isActive } | prefix('categories__category--')"
                 @click="onCategoryClick(id)"
             ><b-icon :icon="icon" /> {{ title }}</chip>
         </div>
@@ -43,19 +43,19 @@ export default {
 <style scoped lang="scss">
 @import 'shared/styles/colors.scss';
 
-.categories-wrapper {
-  display: flex;
-  background: $void;
-  padding: 8px;
-  justify-content: space-between;
-  cursor: pointer;
-
-  &__main-categories {
+.categories {
     display: flex;
-  }
+    background: $void;
+    padding: 8px;
+    justify-content: space-between;
+    cursor: pointer;
 
-  &__category--active {
-    color: $white;
-  }
+    &__list {
+        display: flex;
+    }
+
+    &__category--active {
+        color: $white;
+    }
 }
 </style>
