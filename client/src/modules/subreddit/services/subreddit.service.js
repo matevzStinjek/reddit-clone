@@ -14,4 +14,14 @@ export default {
             })
         })
     },
+    fetchCommunityInfo () {
+        return new Promise(resolve => {
+            resolve({
+                description: 'FC Barcelona News and Discussion.',
+                memberCount: '72700000',
+                onlineMemberCount: '1100',
+                createdDate: 'Oct 12, 2010',
+            })
+        })
+    },
 }
