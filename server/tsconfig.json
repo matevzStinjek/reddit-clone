@@ -1,0 +1,19 @@
+{
+   "compilerOptions": {
+      "target": "es5",
+      "module": "commonjs",
+      "strict": true,
+      "lib": [ "esnext.asynciterable" ],
+      "baseUrl": "./src",
+      "paths": {
+         "modules": ["modules/"],
+         "models": ["models.ts"]
+      },
+      "esModuleInterop": true,
+      "moduleResolution": "node",
+      "experimentalDecorators": true,
+      "emitDecoratorMetadata": true,
+      "strictPropertyInitialization": false,
+      "sourceMap": true
+   }
+}
