@@ -1,9 +1,9 @@
 {
    "compilerOptions": {
-      "target": "es5",
+      "target": "es2018",
       "module": "commonjs",
       "strict": true,
-      "lib": [ "esnext.asynciterable" ],
+      "lib": [ "es2018", "esnext.asynciterable" ],
       "baseUrl": "./src",
       "paths": {
          "modules": ["modules/"],

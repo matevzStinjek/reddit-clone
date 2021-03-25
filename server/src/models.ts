@@ -1,1 +1,1 @@
-export { User } from "modules/user/models/User";
+export { User, Guest } from "modules/user/models/User";
