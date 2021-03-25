@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
-import { ObjectType, Field, ID, Int, Authorized } from "type-graphql";
+import { ObjectType, Field, ID, Int } from "type-graphql";
 import { genSaltSync, hashSync } from "bcrypt";
 
 @Entity()
@@ -36,14 +36,13 @@ export class User extends BaseEntity {
     @Column({ nullable: true })
     rolesString?: string;
 
-    @Authorized( ["admin"] )
     @Field( () => [String] )
     get roles (): string[] {
-        return ( this.rolesString || "" ).split( "," );
+        return ( this.rolesString || "" ).split( "," ); // primitive deserialization
     }
 
     set roles ( rolesArray: string[] ) {
-        this.rolesString = rolesArray.join( "," );
+        this.rolesString = rolesArray.join( "," ); // primitive serialization
     }
 
     @Field( () => [Int], { nullable: true })
