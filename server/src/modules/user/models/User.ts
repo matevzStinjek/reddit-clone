@@ -56,6 +56,9 @@ export class User extends BaseEntity {
     // comments?: void;
 }
 
+export class Session extends BaseEntity {
+    
+}
 
 export class Guest {
 
