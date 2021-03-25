@@ -54,11 +54,3 @@ export class User extends BaseEntity {
     // @Field({ nullable: true })
     // comments?: void;
 }
-
-
-export class Guest {
-
-    get roles (): string[] {
-        return ["guest"];
-    }
-}
