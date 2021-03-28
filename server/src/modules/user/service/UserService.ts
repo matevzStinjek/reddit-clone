@@ -18,4 +18,10 @@ export class UserService {
         await user.save();
         return user;
     }
+
+    // util
+    static async doesUsernameExist( username: string ): Promise<boolean> {
+        const user = await User.findOne({ where: { username } });
+        return Boolean( user );
+    }
 }
