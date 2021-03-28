@@ -1,5 +1,5 @@
 import { InputType, Field } from "type-graphql";
-import { IsString, Length } from "class-validator";
+import { Length } from "class-validator";
 import { IsPasswordValid, IsUsernameAvailable } from "../validators";
 
 @InputType()
