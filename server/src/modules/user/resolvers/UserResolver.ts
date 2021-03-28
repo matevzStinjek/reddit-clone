@@ -21,6 +21,10 @@ export class UserResolver implements ResolverInterface<User>  {
         return await UserService.create( userData );
     }
 
+    /**
+     * Field resolvers
+     */
+
     @FieldResolver()
     subredditSubscriptions( @Root() user: User ): number[] {
         user;
