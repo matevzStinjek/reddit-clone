@@ -15,7 +15,7 @@ interface Config {
 }
 
 const isDevMode = process.env.NODE_ENV == "development";
-isDevMode && console.log( "development mode" );
+isDevMode && console.log( "🔧 development mode" );
 
 const config: Config = {
     debugLogging: isDevMode,
