@@ -3,7 +3,7 @@ helloooooooo
 this is serious business
 
 Stack:
-Vue
-GraphQL
-Nodejs
+Vue Apollo 4
+Apollo GraphQL
+Node
 MongoDB

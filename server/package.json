@@ -1,26 +1,50 @@
 {
-  "name": "reddit-clone",
+  "name": "server",
   "version": "1.0.0",
-  "description": "",
-  "main": "app.js",
-  "type": "module",
+  "main": "index.ts",
+  "repository": "git@github.com:matevzStinjek/reddit-clone.git",
+  "author": "matevzStinjek <stinjek@gmail.com>",
+  "keywords": [
+    "apollo",
+    "apollo-server",
+    "type-graphql",
+    "typeorm",
+    "typescript",
+    "postgres"
+  ],
+  "license": "MIT",
   "scripts": {
+    "start": "nodemon -w src -r tsconfig-paths/register --ext ts --exec ts-node src/index.ts",
+    "lint": "tsc --noEmit && eslint \"src/**/*.{js,ts}\" --fix",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/matevzStinjek/reddit-clone.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/matevzStinjek/reddit-clone/issues"
-  },
-  "homepage": "https://github.com/matevzStinjek/reddit-clone#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "path": "^0.12.7",
-    "serve-static": "^1.14.1"
+    "@types/bcrypt": "3.0.0",
+    "@types/lodash": "4.14.168",
+    "apollo-server": "2.21.0",
+    "bcrypt": "5.0.1",
+    "class-validator": "0.13.1",
+    "dotenv": "8.2.0",
+    "graphql": "15.5.0",
+    "lodash": "4.17.21",
+    "pg": "8.5.1",
+    "reflect-metadata": "0.1.13",
+    "type-graphql": "1.1.1",
+    "typeorm": "0.2.31"
+  },
+  "devDependencies": {
+    "@types/node": "^8.0.29",
+    "@typescript-eslint/eslint-plugin": "4.15.0",
+    "@typescript-eslint/parser": "4.15.0",
+    "eslint": "7.20.0",
+    "nodemon": "2.0.7",
+    "ts-node": "9.1.1",
+    "tsconfig-paths": "3.9.0",
+    "tscpaths": "0.0.9",
+    "typescript": "4.1.5"
+  },
+  "_moduleAliases": {
+    "@modules": "dist/modules",
+    "models": "dist/models"
   }
 }
