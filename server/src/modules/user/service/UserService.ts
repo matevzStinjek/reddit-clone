@@ -12,7 +12,7 @@ export class UserService {
         return await getUserQB( user ).where( params ).getOne();
     }
 
-    static async create ( userData: { username: string, password: string }): Promise<User> {
+    static async create( userData: { username: string, password: string }): Promise<User> {
         const user = new User();
         user.assign( userData );
         await user.save();
