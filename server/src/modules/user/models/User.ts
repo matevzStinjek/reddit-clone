@@ -1,12 +1,13 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { ObjectType, Field, ID, Int } from "type-graphql";
 import { genSaltSync, hashSync } from "bcrypt";
+import { CreateUser } from "../contracts";
 
 @Entity()
 @ObjectType()
 export class User extends BaseEntity {
 
-    assign ( params: { username: string, password: string }): void {
+    assign ( params: CreateUser ): void {
         this.username = params.username;
         this.password = params.password;
     }

@@ -1,6 +1,6 @@
 import { User } from "models";
 import { getUserQB }  from "./user.qb";
-import { FindUserInput } from "../contracts";
+import { CreateUser, FindUser } from "../contracts";
 
 export class UserService {
 
@@ -8,11 +8,11 @@ export class UserService {
         return await getUserQB( user ).getMany();
     }
 
-    static async findOne( user: User, params: FindUserInput ): Promise<User | undefined>{
+    static async findOne( user: User, params: FindUser ): Promise<User | undefined>{
         return await getUserQB( user ).where( params ).getOne();
     }
 
-    static async create( userData: { username: string, password: string }): Promise<User> {
+    static async create( userData: CreateUser ): Promise<User> {
         const user = new User();
         user.assign( userData );
         await user.save();
