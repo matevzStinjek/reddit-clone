@@ -1,5 +1,6 @@
 import { Field, ID, ObjectType } from "type-graphql";
-import { Entity, BaseEntity, Column, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, BaseEntity, Column, ManyToOne, RelationId, PrimaryGeneratedColumn } from "typeorm";
+import { TypeormLoader } from "type-graphql-dataloader";
 import { User } from "models";
 import { CreatePost } from "../signatures";
 
@@ -7,10 +8,10 @@ import { CreatePost } from "../signatures";
 @ObjectType()
 export class Post extends BaseEntity {
 
-    assign( params: CreatePost, user: User ): void {
+    assign( params: CreatePost, author: User ): void {
         this.title = params.title;
         this.content = params.content;
-        this.author = Promise.resolve( user );
+        this.author = author;
     }
 
     @Field( () => ID )
@@ -27,7 +28,11 @@ export class Post extends BaseEntity {
 
     @Field( () => User )
     @ManyToOne( () => User, ( author: User ) => author.posts )
-    author: Promise<User>;
+    @TypeormLoader( () => User, ( post: Post ) => post.authorId )
+    author: User;
+
+    @RelationId( ( post: Post ) => post.author )
+    authorId: string;
 
     // subreddit: Subreddit;
 

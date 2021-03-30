@@ -1,11 +1,11 @@
-import { Query, Resolver, FieldResolver, Root, Mutation, Arg, Ctx, ResolverInterface } from "type-graphql";
+import { Query, Resolver, Mutation, Arg, Ctx } from "type-graphql";
 import { User } from "models";
 import { CreateUserInput, FindUserInput } from "../signatures";
 import { UserService } from "../service";
 import { IContext } from "context";
 
-@Resolver( () => User )
-export class UserResolver implements ResolverInterface<User>  {
+@Resolver()
+export class UserResolver {
 
     @Query( () => [User] )
     async getUsers( @Ctx() { user }: IContext ): Promise<User[]> {
@@ -21,24 +21,4 @@ export class UserResolver implements ResolverInterface<User>  {
     async createUser( @Arg( "data" ) userData: CreateUserInput ): Promise<User> {
         return await UserService.create( userData );
     }
-
-    /**
-     * Field resolvers
-     */
-
-    @FieldResolver()
-    subredditSubscriptions( @Root() user: User ): number[] {
-        user;
-        return [ 1, 2, 3 ];
-    }
-
-    // @FieldResolver()
-    // posts(): void {
-    //     return;
-    // }
-
-    // @FieldResolver()
-    // comments(): void {
-    //     return;
-    // }
 }
