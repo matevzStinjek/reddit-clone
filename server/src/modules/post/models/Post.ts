@@ -7,10 +7,10 @@ import { CreatePost } from "../signatures";
 @ObjectType()
 export class Post extends BaseEntity {
 
-    assign( params: CreatePost, user: User ): void {
+    assign( params: CreatePost, author: User ): void {
         this.title = params.title;
         this.content = params.content;
-        this.author = Promise.resolve( user );
+        this.author = author;
     }
 
     @Field( () => ID )
