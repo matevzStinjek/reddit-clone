@@ -21,6 +21,7 @@ post {
     title
     content
     author
+    subreddit
     comments
 }
 
