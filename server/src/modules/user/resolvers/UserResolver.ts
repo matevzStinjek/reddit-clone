@@ -8,13 +8,13 @@ import { IContext } from "context";
 export class UserResolver implements ResolverInterface<User>  {
 
     @Query( () => [User] )
-    async findUsers( @Ctx() { user }: IContext ): Promise<User[]> {
-        return await UserService.findAll( user );
+    async getUsers( @Ctx() { user }: IContext ): Promise<User[]> {
+        return await UserService.readAll( user );
     }
 
     @Query( () => User )
-    async findUser( @Arg( "params" ) params: FindUserInput, @Ctx() { user }: IContext ): Promise<User | undefined> {
-        return await UserService.findOne( user, params );
+    async getUser( @Arg( "params" ) params: FindUserInput, @Ctx() { user }: IContext ): Promise<User | undefined> {
+        return await UserService.readOne( user, params );
     }
 
     @Mutation( () => User )

@@ -4,11 +4,11 @@ import { CreateUser, FindUser } from "../signatures";
 
 export class UserService {
 
-    static async findAll( user: User | Guest ): Promise<User[]> {
+    static async readAll( user: User | Guest ): Promise<User[]> {
         return await getUserQB( user ).getMany();
     }
 
-    static async findOne( user: User | Guest, params: FindUser ): Promise<User | undefined>{
+    static async readOne( user: User | Guest, params: FindUser ): Promise<User | undefined>{
         return await getUserQB( user ).where( params ).getOne();
     }
 
