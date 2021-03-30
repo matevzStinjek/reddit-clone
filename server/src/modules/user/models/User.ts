@@ -1,7 +1,7 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
 import { ObjectType, Field, ID, Int } from "type-graphql";
 import { genSaltSync, hashSync } from "bcrypt";
-import { CreateUser } from "../contracts";
+import { CreateUser } from "../signatures";
 
 @Entity()
 @ObjectType()

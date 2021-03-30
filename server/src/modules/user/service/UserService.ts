@@ -1,6 +1,6 @@
 import { User } from "models";
 import { getUserQB }  from "./user.qb";
-import { CreateUser, FindUser } from "../contracts";
+import { CreateUser, FindUser } from "../signatures";
 
 export class UserService {
 

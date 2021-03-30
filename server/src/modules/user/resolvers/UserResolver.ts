@@ -1,6 +1,6 @@
 import { Query, Resolver, FieldResolver, Root, Mutation, Arg, Ctx, ResolverInterface } from "type-graphql";
 import { User } from "models";
-import { CreateUserInput, FindUserInput } from "../contracts";
+import { CreateUserInput, FindUserInput } from "../signatures";
 import { UserService } from "../service";
 
 @Resolver( () => User )
