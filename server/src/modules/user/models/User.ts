@@ -1,6 +1,7 @@
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
 import { ObjectType, Field, ID, Int } from "type-graphql";
 import { genSaltSync, hashSync } from "bcrypt";
+import { Post } from "models";
 import { CreateUser } from "../signatures";
 
 @Entity()
@@ -49,8 +50,9 @@ export class User extends BaseEntity {
     @Field( () => [Int], { nullable: true })
     subredditSubscriptions?: number[];
 
-    // @Field({ nullable: true })
-    // posts?: void;
+    @Field( () => [Post] )
+    @OneToMany( () => Post, ( post: Post ) => post.author )
+    posts: Promise<Post[]>;
 
     // @Field({ nullable: true })
     // comments?: void;

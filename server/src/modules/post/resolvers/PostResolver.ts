@@ -1,4 +1,4 @@
-import { Query, Resolver, Arg, Mutation, Ctx } from "type-graphql";
+import { Query, Resolver, Arg, Mutation, Ctx, Root, FieldResolver } from "type-graphql";
 import { Post, User } from "models";
 import { CreatePostInput, FindPostInput } from "../signatures";
 import { PostService } from "../service";
@@ -21,5 +21,14 @@ export class PostResolver {
     @Mutation( () => Post )
     async createPost( @Arg( "data" ) postData: CreatePostInput, @Ctx() { user }: IContext ): Promise<Post> {
         return await PostService.create( postData, user as User );
+    }
+
+    /**
+     * Field resolvers
+     */
+
+    @FieldResolver()
+    async author( @Root() post: Post ): Promise<User> {
+        return await post.author;
     }
 }

@@ -10,7 +10,7 @@ export class Post extends BaseEntity {
     assign( params: CreatePost, user: User ): void {
         this.title = params.title;
         this.content = params.content;
-        this.author = user;
+        this.author = Promise.resolve( user );
     }
 
     @Field( () => ID )
@@ -27,7 +27,7 @@ export class Post extends BaseEntity {
 
     @Field( () => User )
     @ManyToOne( () => User, ( author: User ) => author.posts )
-    author: User;
+    author: Promise<User>;
 
     // subreddit: Subreddit;
 
