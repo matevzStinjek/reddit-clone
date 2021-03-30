@@ -7,12 +7,12 @@ import { UserService } from "../service";
 export class UserResolver implements ResolverInterface<User>  {
 
     @Query( () => [User] )
-    async getUsers( @Ctx() { user }: { user: User }): Promise<User[]> {
+    async findUsers( @Ctx() { user }: { user: User }): Promise<User[]> {
         return await UserService.findAll( user );
     }
 
     @Query( () => User )
-    async getUser( @Arg( "params" ) params: FindUserInput, @Ctx() { user }: { user: User }): Promise<User | undefined> {
+    async findUser( @Arg( "params" ) params: FindUserInput, @Ctx() { user }: { user: User }): Promise<User | undefined> {
         return await UserService.findOne( user, params );
     }
 
