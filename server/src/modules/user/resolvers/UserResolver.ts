@@ -12,7 +12,7 @@ export class UserResolver implements ResolverInterface<User>  {
         return await UserService.readAll( user );
     }
 
-    @Query( () => User )
+    @Query( () => User, { nullable: true })
     async getUser( @Arg( "params" ) params: FindUserInput, @Ctx() { user }: IContext ): Promise<User | undefined> {
         return await UserService.readOne( user, params );
     }
