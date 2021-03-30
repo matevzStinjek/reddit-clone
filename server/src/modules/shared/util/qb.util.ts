@@ -1,5 +1,4 @@
 import { SelectQueryBuilder } from "typeorm";
-import { User } from "models";
 import { Roles } from "modules/shared/contracts/enums";
 
 type RoleQBSignature = ( qb: SelectQueryBuilder<any> ) => void;
@@ -7,7 +6,7 @@ type RoleQBSignature = ( qb: SelectQueryBuilder<any> ) => void;
 export type RoleQBConditions = Record<Roles, RoleQBSignature>;
 
 export const addQueryBuilderConditions = (
-    qb: SelectQueryBuilder<User>,
+    qb: SelectQueryBuilder<any>,
     roles: string[],
     roleSpecificQueryBuilderConditions: RoleQBConditions
 ): void => {
