@@ -1,5 +1,6 @@
-import { BaseEntity, Column, Entity, OneToMany, PrimaryGeneratedColumn } from "typeorm";
-import { ObjectType, Field, ID, Int } from "type-graphql";
+import { ObjectType, Field, ID } from "type-graphql";
+import { BaseEntity, Column, Entity, OneToMany, RelationId, PrimaryGeneratedColumn } from "typeorm";
+import { TypeormLoader } from "type-graphql-dataloader";
 import { genSaltSync, hashSync } from "bcrypt";
 import { Post } from "models";
 import { CreateUser } from "../signatures";
@@ -13,13 +14,16 @@ export class User extends BaseEntity {
         this.password = params.password;
     }
 
+
     @Field( () => ID )
     @PrimaryGeneratedColumn()
     id: string;
 
+
     @Field()
     @Column()
     username: string;
+
 
     @Column()
     passwordHash: string;
@@ -35,6 +39,7 @@ export class User extends BaseEntity {
         this.passwordHash = passwordHash;
     }
 
+
     @Column({ nullable: true })
     rolesString?: string;
 
@@ -47,13 +52,17 @@ export class User extends BaseEntity {
         this.rolesString = rolesArray.join( "," ); // primitive serialization
     }
 
-    @Field( () => [Int], { nullable: true })
-    subredditSubscriptions?: number[];
 
     @Field( () => [Post] )
     @OneToMany( () => Post, ( post: Post ) => post.author )
-    posts: Promise<Post[]>;
+    @TypeormLoader( () => Post, ( user: User ) => user.postIds )
+    posts: Post[];
 
-    // @Field({ nullable: true })
-    // comments?: void;
+    @RelationId( ( user: User ) => user.posts )
+    postIds: string[];
+
+    
+    // comments: Commentp[];
+
+    // joinedSubreddits: Subreddit[];
 }
