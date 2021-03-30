@@ -1,14 +1,14 @@
-import { User } from "models";
+import { User, Guest } from "models";
 import { getUserQB }  from "./user.qb";
 import { CreateUser, FindUser } from "../signatures";
 
 export class UserService {
 
-    static async findAll( user: User ): Promise<User[]> {
+    static async findAll( user: User | Guest ): Promise<User[]> {
         return await getUserQB( user ).getMany();
     }
 
-    static async findOne( user: User, params: FindUser ): Promise<User | undefined>{
+    static async findOne( user: User | Guest, params: FindUser ): Promise<User | undefined>{
         return await getUserQB( user ).where( params ).getOne();
     }
 

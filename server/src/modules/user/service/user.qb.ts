@@ -1,8 +1,8 @@
 import { getRepository, SelectQueryBuilder } from "typeorm";
-import { User } from "models";
+import { User, Guest } from "models";
 import { RoleQBConditions, addQueryBuilderConditions } from "modules/shared/util/qb.util";
 
-export const getUserQB = ( user: User ) : SelectQueryBuilder<User> => {
+export const getUserQB = ( user: User | Guest ) : SelectQueryBuilder<User> => {
     const qb = getRepository( User ).createQueryBuilder( "user" );
     addQueryBuilderConditions( qb, user.roles, roleSpecificQueryBuilderConditions );
     return qb;

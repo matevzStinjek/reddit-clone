@@ -2,17 +2,18 @@ import { Query, Resolver, FieldResolver, Root, Mutation, Arg, Ctx, ResolverInter
 import { User } from "models";
 import { CreateUserInput, FindUserInput } from "../signatures";
 import { UserService } from "../service";
+import { IContext } from "context";
 
 @Resolver( () => User )
 export class UserResolver implements ResolverInterface<User>  {
 
     @Query( () => [User] )
-    async findUsers( @Ctx() { user }: { user: User }): Promise<User[]> {
+    async findUsers( @Ctx() { user }: IContext ): Promise<User[]> {
         return await UserService.findAll( user );
     }
 
     @Query( () => User )
-    async findUser( @Arg( "params" ) params: FindUserInput, @Ctx() { user }: { user: User }): Promise<User | undefined> {
+    async findUser( @Arg( "params" ) params: FindUserInput, @Ctx() { user }: IContext ): Promise<User | undefined> {
         return await UserService.findOne( user, params );
     }
 
