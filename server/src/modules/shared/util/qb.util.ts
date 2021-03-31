@@ -1,5 +1,5 @@
 import { SelectQueryBuilder } from "typeorm";
-import { Roles } from "modules/shared/contracts/enums";
+import { Roles } from "modules/shared/signatures/enums";
 
 type RoleQBSignature = ( qb: SelectQueryBuilder<any> ) => void;
 
