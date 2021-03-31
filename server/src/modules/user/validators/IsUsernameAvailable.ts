@@ -1,9 +1,4 @@
-import {
-    registerDecorator,
-    ValidationOptions,
-    ValidatorConstraint,
-    ValidatorConstraintInterface,
-} from "class-validator";
+import { registerDecorator, ValidationOptions, ValidatorConstraint, ValidatorConstraintInterface } from "class-validator";
 import { UserService } from "../service";
 
 @ValidatorConstraint({ async: true })
