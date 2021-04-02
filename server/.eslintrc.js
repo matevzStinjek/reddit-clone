@@ -22,6 +22,7 @@ module.exports = {
         "linebreak-style": [ "error", "unix" ],
         "quotes": [ "error", "double" ],
         "semi": [ "error", "always" ],
+        "eol-last": "error",
         "space-in-parens": [ "error", "always", { "exceptions": ["{}"] } ],
         "@typescript-eslint/explicit-function-return-type": "off",
         "@typescript-eslint/no-explicit-any": 1,
