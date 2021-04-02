@@ -1,13 +1,12 @@
 import "reflect-metadata";
-import { createConnection } from "typeorm";
 import { ApolloServer } from "apollo-server";
 import { buildSchema } from "type-graphql";
+import { ApolloServerLoaderPlugin } from "type-graphql-dataloader";
+import { createConnection, getConnection } from "typeorm";
 import { config } from "./config";
 import { resolvers } from "./resolvers";
 import { authorization as authChecker } from "./auth";
 import { contextProvider as context } from "./context";
-import { ApolloServerLoaderPlugin } from "type-graphql-dataloader";
-import { getConnection } from "typeorm";
 
 async function bootstrap() {
     await createConnection( config.database );
