@@ -18,17 +18,17 @@ module.exports = {
         "@typescript-eslint"
     ],
     "rules": {
-        "indent": [ "error", 4 ],
-        "linebreak-style": [ "error", "unix" ],
-        "quotes": [ "error", "double" ],
-        "semi": [ "error", "always" ],
-        "eol-last": "error",
-        "space-in-parens": [ "error", "always", { "exceptions": ["{}"] } ],
         "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/ban-ts-ignore": "off",
         "@typescript-eslint/no-explicit-any": 1,
         "@typescript-eslint/no-inferrable-types": [ "warn", { "ignoreParameters": true } ],
         "@typescript-eslint/no-unused-vars": "warn",
-        "@typescript-eslint/ban-ts-ignore": "off",
+        "eol-last": "error",
+        "linebreak-style": [ "error", "unix" ],
+        "indent": [ "error", 4 ],
+        "quotes": [ "error", "double" ],
+        "semi": [ "error", "always" ],
+        "space-in-parens": [ "error", "always", { "exceptions": ["{}"] } ],
     },
 };
 
