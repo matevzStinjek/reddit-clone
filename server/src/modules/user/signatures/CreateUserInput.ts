@@ -2,7 +2,7 @@ import { InputType, Field } from "type-graphql";
 import { Length } from "class-validator";
 import { IsPasswordValid, IsUsernameAvailable } from "../validators";
 
-export class CreateUser {
+export interface CreateUser {
 
     username: string;
 
@@ -10,7 +10,7 @@ export class CreateUser {
 }
 
 @InputType()
-export class CreateUserInput extends CreateUser {
+export class CreateUserInput implements CreateUser {
 
     @Field()
     @Length( 4, 16 )
