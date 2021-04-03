@@ -1,7 +1,7 @@
 import { Field, ID, ObjectType } from "type-graphql";
 import { Entity, BaseEntity, Column, ManyToOne, RelationId, PrimaryGeneratedColumn } from "typeorm";
 import { TypeormLoader } from "type-graphql-dataloader";
-import { User } from "models";
+import { User, Subreddit } from "models";
 import { CreatePost } from "../signatures";
 
 @Entity()
@@ -11,6 +11,7 @@ export class Post extends BaseEntity {
     assign( params: CreatePost, author: User ): void {
         this.title = params.title;
         this.content = params.content;
+        this.subredditId = params.subredditId;
         this.author = author;
     }
 
@@ -34,7 +35,13 @@ export class Post extends BaseEntity {
     @RelationId( ( post: Post ) => post.author )
     authorId: string;
 
-    // subreddit: Subreddit;
+    @Field( () => Subreddit )
+    @ManyToOne( () => Subreddit, ( subreddit: Subreddit ) => subreddit.posts )
+    @TypeormLoader( () => Subreddit, ( post: Post ) => post.subredditId )
+    subreddit: Subreddit;
+
+    @RelationId( ( post: Post ) => post.subreddit )
+    subredditId: string;
 
     // comments: Comment[];
 }
