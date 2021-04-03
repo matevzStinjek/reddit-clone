@@ -1,5 +1,6 @@
 import { InputType, Field } from "type-graphql";
 import { Length, MaxLength } from "class-validator";
+import { DoesSubredditExist } from "../validators";
 
 export interface CreatePost {
     
@@ -22,5 +23,6 @@ export class CreatePostInput implements CreatePost {
     content: string;
 
     @Field()
+    @DoesSubredditExist()
     subredditId: string;
 }
