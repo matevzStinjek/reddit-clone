@@ -10,9 +10,9 @@ export interface FindUser {
 @InputType()
 export class FindUserInput implements FindUser {
 
-    @Field({  nullable: true })
+    @Field({ nullable: true })
     id?: string
     
-    @Field({  nullable: true })
+    @Field({ nullable: true })
     username?: string
 }
