@@ -3,7 +3,8 @@ user {
     username
     passwordHash
     passwordSalt
-    roles <- admin, moderator, user, guest
+    -- roles <- admin, moderator, user, guest // rethink
+    moderatedSubreddits
     subredditSubscriptions
     posts
     comments
@@ -12,6 +13,8 @@ user {
 subreddit {
     id
     name
+    creator
+    moderators
     topic
     posts
 }
@@ -38,6 +41,14 @@ FEATURES:
 front page
 post
 comment
-upvote
 delete (author, admin and moderator)
 join subreddit
+
+
+POINTS OF INTEREST:
+- modularity/testability/scalability/readability
+- seperation of concerns
+- granular authorization
+- validation through custom annotations
+- role based base query builder
+- dataloader to solve N+1 problem
