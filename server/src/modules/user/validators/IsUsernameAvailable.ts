@@ -13,10 +13,10 @@ class IsUsernameAvailableConstraint implements ValidatorConstraintInterface {
 }
 
 export function IsUsernameAvailable( validationOptions?: ValidationOptions ) {
-    return function ({ constructor: target }: any, propertyName: string ): void {
+    return function({ constructor: target }: any, propertyName: string ): void {
         registerDecorator({
             name: "IsUsernameAvailable",
-            target, 
+            target,
             propertyName, // username
             options: validationOptions,
             validator: IsUsernameAvailableConstraint,

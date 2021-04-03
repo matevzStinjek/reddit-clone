@@ -8,13 +8,13 @@ export type RoleQBConditions = Record<Roles, RoleQBSignature>;
 export const addQueryBuilderConditions = (
     qb: SelectQueryBuilder<any>,
     roles: string[],
-    roleSpecificQueryBuilderConditions: RoleQBConditions
+    roleSpecificQueryBuilderConditions: RoleQBConditions,
 ): void => {
     qb.where( "0=1" ); // start with limiting all results and then adding them with roles
 
     roles.forEach( addRoleSpecificQueryBuilderCondition );
 
-    function addRoleSpecificQueryBuilderCondition ( role: string ): void {
+    function addRoleSpecificQueryBuilderCondition( role: string ): void {
         if ( hasKey( roleSpecificQueryBuilderConditions, role ) ) {
             roleSpecificQueryBuilderConditions[role]( qb );
         }

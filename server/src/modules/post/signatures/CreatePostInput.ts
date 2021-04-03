@@ -3,7 +3,7 @@ import { Length, MaxLength } from "class-validator";
 import { DoesSubredditExist } from "../validators";
 
 export interface CreatePost {
-    
+
     title: string;
 
     content: string;

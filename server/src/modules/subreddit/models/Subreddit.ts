@@ -22,7 +22,7 @@ export class Subreddit extends BaseEntity {
     @Field()
     @Column()
     name: string;
-    
+
     @Field()
     @Column({ nullable: true })
     topic?: string;

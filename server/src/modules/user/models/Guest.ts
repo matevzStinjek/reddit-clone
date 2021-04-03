@@ -1,6 +1,6 @@
 export class Guest {
 
-    get roles (): string[] {
+    get roles(): string[] {
         return ["guest"];
     }
 }

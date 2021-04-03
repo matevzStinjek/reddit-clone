@@ -13,10 +13,10 @@ class DoesSubredditExistConstraint implements ValidatorConstraintInterface {
 }
 
 export function DoesSubredditExist( validationOptions?: ValidationOptions ) {
-    return function ({ constructor: target }: any, propertyName: string ): void {
+    return function({ constructor: target }: any, propertyName: string ): void {
         registerDecorator({
             name: "IsSubredditNameAvailable",
-            target, 
+            target,
             propertyName, // name
             options: validationOptions,
             validator: DoesSubredditExistConstraint,

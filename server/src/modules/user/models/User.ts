@@ -9,7 +9,7 @@ import { CreateUser } from "../signatures";
 @ObjectType()
 export class User extends BaseEntity {
 
-    assign ( params: CreateUser ): void {
+    assign( params: CreateUser ): void {
         this.username = params.username;
         this.password = params.password;
     }
@@ -31,7 +31,7 @@ export class User extends BaseEntity {
     @Column()
     passwordSalt: string;
 
-    set password ( password: string ) {
+    set password( password: string ) {
         const passwordSalt = genSaltSync();
         const passwordHash = hashSync( password, passwordSalt );
 
@@ -44,11 +44,11 @@ export class User extends BaseEntity {
     rolesString?: string;
 
     @Field( () => [String] )
-    get roles (): string[] {
+    get roles(): string[] {
         return ( this.rolesString || "" ).split( "," ); // primitive deserialization
     }
 
-    set roles ( rolesArray: string[] ) {
+    set roles( rolesArray: string[] ) {
         this.rolesString = rolesArray.join( "," ); // primitive serialization
     }
 
@@ -61,7 +61,7 @@ export class User extends BaseEntity {
     @RelationId( ( user: User ) => user.posts )
     postIds: string[];
 
-    
+
     // comments: Commentp[];
 
     // joinedSubreddits: Subreddit[];

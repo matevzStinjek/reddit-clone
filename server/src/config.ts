@@ -33,11 +33,11 @@ const config: Config = {
         migrationsRun: !isDevMode || process.env.MAKE_MIGRATIONS == "true" || true,
         logging: false,
         cli: {
-            migrationsDir: !isDevMode ? "./src/db/migrations" : `${ __dirname }/dist/db/migrations/**/*.js`
-        }
+            migrationsDir: !isDevMode ? "./src/db/migrations" : `${ __dirname }/dist/db/migrations/**/*.js`,
+        },
     },
     cronJobExpression: "0 * * * *",
-    costumerPlatformUrl: process.env.COSTUMER_PLATFORM_URL || "http://localhost:3001/"   // This should point to our gui url where we serve data for costumers of services
+    costumerPlatformUrl: process.env.COSTUMER_PLATFORM_URL || "http://localhost:3001/",   // This should point to our gui url where we serve data for costumers of services
 };
 
 export { config };
