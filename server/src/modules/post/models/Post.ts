@@ -41,6 +41,7 @@ export class Post extends BaseEntity {
     subreddit: Subreddit;
 
     @RelationId( ( post: Post ) => post.subreddit )
+    @Column()
     subredditId: string;
 
     // comments: Comment[];
